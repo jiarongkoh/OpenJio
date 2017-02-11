@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>403049849355-qon7fg19cti5sgcdms3g5e03epk9ifhe.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.403049849355-qon7fg19cti5sgcdms3g5e03epk9ifhe</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDXHGIKar0Bc3_8Mqxqgqn2qrbKamDJ3h0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>403049849355</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>kohjiarong.OpenJio</string>
+	<key>PROJECT_ID</key>
+	<string>openjio-909dc</string>
+	<key>STORAGE_BUCKET</key>
+	<string>openjio-909dc.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:403049849355:ios:27536d19ea4a0aa4</string>
+	<key>DATABASE_URL</key>
+	<string>https://openjio-909dc.firebaseio.com</string>
+</dict>
+</plist>

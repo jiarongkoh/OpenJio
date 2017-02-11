@@ -1,0 +1,734 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2A17C7831E4715D600AF9A68 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A17C7821E4715D600AF9A68 /* MapViewController.swift */; };
+		2A17C7851E471E2600AF9A68 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A17C7841E471E2600AF9A68 /* SettingsViewController.swift */; };
+		2A17C7871E47322D00AF9A68 /* NewSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A17C7861E47322D00AF9A68 /* NewSearchViewController.swift */; };
+		2A17C78B1E47427700AF9A68 /* FBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A17C78A1E47427700AF9A68 /* FBConstants.swift */; };
+		2A17C78D1E4742AA00AF9A68 /* FBLoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A17C78C1E4742AA00AF9A68 /* FBLoginHelper.swift */; };
+		2A17C78F1E474C5400AF9A68 /* FIRConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A17C78E1E474C5400AF9A68 /* FIRConstants.swift */; };
+		2A17C7921E475BB900AF9A68 /* FIRHelperClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A17C7911E475BB900AF9A68 /* FIRHelperClient.swift */; };
+		2A17C7941E4771A300AF9A68 /* ActivityPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A17C7931E4771A300AF9A68 /* ActivityPin.swift */; };
+		2A39BACA1E4EFAB600D454F9 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A39BAC81E4EFAB600D454F9 /* Model.xcdatamodeld */; };
+		2A39BAD11E4EFC1F00D454F9 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A39BACD1E4EFC1F00D454F9 /* User+CoreDataClass.swift */; };
+		2A39BAD21E4EFC1F00D454F9 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A39BACE1E4EFC1F00D454F9 /* User+CoreDataProperties.swift */; };
+		2A39BAD31E4EFC1F00D454F9 /* Photo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A39BACF1E4EFC1F00D454F9 /* Photo+CoreDataClass.swift */; };
+		2A39BAD41E4EFC1F00D454F9 /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A39BAD01E4EFC1F00D454F9 /* Photo+CoreDataProperties.swift */; };
+		2AF7C8DF1E46FBFE0065494C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF7C8DE1E46FBFE0065494C /* AppDelegate.swift */; };
+		2AF7C8E11E46FBFE0065494C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF7C8E01E46FBFE0065494C /* LoginViewController.swift */; };
+		2AF7C8E41E46FBFE0065494C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AF7C8E21E46FBFE0065494C /* Main.storyboard */; };
+		2AF7C8E61E46FBFE0065494C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AF7C8E51E46FBFE0065494C /* Assets.xcassets */; };
+		2AF7C8E91E46FBFE0065494C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AF7C8E71E46FBFE0065494C /* LaunchScreen.storyboard */; };
+		2AF7C8F41E46FBFE0065494C /* OpenJioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF7C8F31E46FBFE0065494C /* OpenJioTests.swift */; };
+		2AF7C8FF1E46FBFE0065494C /* OpenJioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF7C8FE1E46FBFE0065494C /* OpenJioUITests.swift */; };
+		2AF7C9101E46FE770065494C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AF7C90F1E46FE770065494C /* GoogleService-Info.plist */; };
+		2AF8E4901E4E0F0F0078E4C1 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF8E48F1E4E0F0F0078E4C1 /* ActivityViewController.swift */; };
+		2AF8E4931E4E275D0078E4C1 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF8E4921E4E275D0078E4C1 /* CoreDataStack.swift */; };
+		6A9F1D008DBBA6F32B1120F8 /* Pods_OpenJio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3668C88FAAEB6E82E01DBBA /* Pods_OpenJio.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2AF7C8F01E46FBFE0065494C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2AF7C8D31E46FBFE0065494C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2AF7C8DA1E46FBFE0065494C;
+			remoteInfo = OpenJio;
+		};
+		2AF7C8FB1E46FBFE0065494C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2AF7C8D31E46FBFE0065494C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2AF7C8DA1E46FBFE0065494C;
+			remoteInfo = OpenJio;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2A17C7821E4715D600AF9A68 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		2A17C7841E471E2600AF9A68 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		2A17C7861E47322D00AF9A68 /* NewSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewSearchViewController.swift; sourceTree = "<group>"; };
+		2A17C78A1E47427700AF9A68 /* FBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBConstants.swift; sourceTree = "<group>"; };
+		2A17C78C1E4742AA00AF9A68 /* FBLoginHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBLoginHelper.swift; sourceTree = "<group>"; };
+		2A17C78E1E474C5400AF9A68 /* FIRConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FIRConstants.swift; sourceTree = "<group>"; };
+		2A17C7911E475BB900AF9A68 /* FIRHelperClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FIRHelperClient.swift; sourceTree = "<group>"; };
+		2A17C7931E4771A300AF9A68 /* ActivityPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityPin.swift; sourceTree = "<group>"; };
+		2A39BAC91E4EFAB600D454F9 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		2A39BACD1E4EFC1F00D454F9 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2A39BACE1E4EFC1F00D454F9 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2A39BACF1E4EFC1F00D454F9 /* Photo+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2A39BAD01E4EFC1F00D454F9 /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2AF7C8DB1E46FBFE0065494C /* OpenJio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenJio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AF7C8DE1E46FBFE0065494C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2AF7C8E01E46FBFE0065494C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		2AF7C8E31E46FBFE0065494C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2AF7C8E51E46FBFE0065494C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2AF7C8E81E46FBFE0065494C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2AF7C8EA1E46FBFE0065494C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2AF7C8EF1E46FBFE0065494C /* OpenJioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenJioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AF7C8F31E46FBFE0065494C /* OpenJioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenJioTests.swift; sourceTree = "<group>"; };
+		2AF7C8F51E46FBFE0065494C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2AF7C8FA1E46FBFE0065494C /* OpenJioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenJioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AF7C8FE1E46FBFE0065494C /* OpenJioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenJioUITests.swift; sourceTree = "<group>"; };
+		2AF7C9001E46FBFE0065494C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2AF7C90F1E46FE770065494C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2AF8E48F1E4E0F0F0078E4C1 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		2AF8E4921E4E275D0078E4C1 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		9494664D603BF84EA123F39F /* Pods-OpenJio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenJio.release.xcconfig"; path = "Pods/Target Support Files/Pods-OpenJio/Pods-OpenJio.release.xcconfig"; sourceTree = "<group>"; };
+		A3668C88FAAEB6E82E01DBBA /* Pods_OpenJio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OpenJio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9371713E3CD72DCE4513BA8 /* Pods-OpenJio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenJio.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OpenJio/Pods-OpenJio.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2AF7C8D81E46FBFE0065494C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A9F1D008DBBA6F32B1120F8 /* Pods_OpenJio.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AF7C8EC1E46FBFE0065494C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AF7C8F71E46FBFE0065494C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2A17C7881E47423000AF9A68 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2A17C78A1E47427700AF9A68 /* FBConstants.swift */,
+				2A17C78C1E4742AA00AF9A68 /* FBLoginHelper.swift */,
+				2A17C78E1E474C5400AF9A68 /* FIRConstants.swift */,
+				2A17C7911E475BB900AF9A68 /* FIRHelperClient.swift */,
+				2A17C7931E4771A300AF9A68 /* ActivityPin.swift */,
+				2AF8E4941E4E27860078E4C1 /* CoreData */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		2AF7C8D21E46FBFE0065494C = {
+			isa = PBXGroup;
+			children = (
+				2AF7C8DD1E46FBFE0065494C /* OpenJio */,
+				2AF7C8F21E46FBFE0065494C /* OpenJioTests */,
+				2AF7C8FD1E46FBFE0065494C /* OpenJioUITests */,
+				2AF7C8DC1E46FBFE0065494C /* Products */,
+				9AE4DC4234D1BB0703C1DE11 /* Pods */,
+				C6FFE9CB7A10DEE99D38ADF1 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		2AF7C8DC1E46FBFE0065494C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2AF7C8DB1E46FBFE0065494C /* OpenJio.app */,
+				2AF7C8EF1E46FBFE0065494C /* OpenJioTests.xctest */,
+				2AF7C8FA1E46FBFE0065494C /* OpenJioUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2AF7C8DD1E46FBFE0065494C /* OpenJio */ = {
+			isa = PBXGroup;
+			children = (
+				2AF7C8DE1E46FBFE0065494C /* AppDelegate.swift */,
+				2A17C7881E47423000AF9A68 /* Models */,
+				2AF7C90D1E46FC2B0065494C /* Controllers */,
+				2AF7C90C1E46FC1B0065494C /* Assets */,
+				2AF7C90E1E46FC370065494C /* SupportingFiles */,
+			);
+			path = OpenJio;
+			sourceTree = "<group>";
+		};
+		2AF7C8F21E46FBFE0065494C /* OpenJioTests */ = {
+			isa = PBXGroup;
+			children = (
+				2AF7C8F31E46FBFE0065494C /* OpenJioTests.swift */,
+				2AF7C8F51E46FBFE0065494C /* Info.plist */,
+			);
+			path = OpenJioTests;
+			sourceTree = "<group>";
+		};
+		2AF7C8FD1E46FBFE0065494C /* OpenJioUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2AF7C8FE1E46FBFE0065494C /* OpenJioUITests.swift */,
+				2AF7C9001E46FBFE0065494C /* Info.plist */,
+			);
+			path = OpenJioUITests;
+			sourceTree = "<group>";
+		};
+		2AF7C90C1E46FC1B0065494C /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				2AF7C8E21E46FBFE0065494C /* Main.storyboard */,
+				2AF7C8E51E46FBFE0065494C /* Assets.xcassets */,
+				2AF7C8E71E46FBFE0065494C /* LaunchScreen.storyboard */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		2AF7C90D1E46FC2B0065494C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2AF7C8E01E46FBFE0065494C /* LoginViewController.swift */,
+				2A17C7821E4715D600AF9A68 /* MapViewController.swift */,
+				2A17C7861E47322D00AF9A68 /* NewSearchViewController.swift */,
+				2A17C7841E471E2600AF9A68 /* SettingsViewController.swift */,
+				2AF8E48F1E4E0F0F0078E4C1 /* ActivityViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		2AF7C90E1E46FC370065494C /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				2AF7C90F1E46FE770065494C /* GoogleService-Info.plist */,
+				2AF7C8EA1E46FBFE0065494C /* Info.plist */,
+			);
+			name = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		2AF8E4941E4E27860078E4C1 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				2AF8E4921E4E275D0078E4C1 /* CoreDataStack.swift */,
+				2A39BACD1E4EFC1F00D454F9 /* User+CoreDataClass.swift */,
+				2A39BACE1E4EFC1F00D454F9 /* User+CoreDataProperties.swift */,
+				2A39BACF1E4EFC1F00D454F9 /* Photo+CoreDataClass.swift */,
+				2A39BAD01E4EFC1F00D454F9 /* Photo+CoreDataProperties.swift */,
+				2A39BAC81E4EFAB600D454F9 /* Model.xcdatamodeld */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+		9AE4DC4234D1BB0703C1DE11 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E9371713E3CD72DCE4513BA8 /* Pods-OpenJio.debug.xcconfig */,
+				9494664D603BF84EA123F39F /* Pods-OpenJio.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C6FFE9CB7A10DEE99D38ADF1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A3668C88FAAEB6E82E01DBBA /* Pods_OpenJio.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2AF7C8DA1E46FBFE0065494C /* OpenJio */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2AF7C9031E46FBFE0065494C /* Build configuration list for PBXNativeTarget "OpenJio" */;
+			buildPhases = (
+				3AFEC579921FA5CFB47F911D /* [CP] Check Pods Manifest.lock */,
+				2AF7C8D71E46FBFE0065494C /* Sources */,
+				2AF7C8D81E46FBFE0065494C /* Frameworks */,
+				2AF7C8D91E46FBFE0065494C /* Resources */,
+				AEB61078366DCB2EE10578DB /* [CP] Embed Pods Frameworks */,
+				0F922E698E1E4B25A49BA3CA /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OpenJio;
+			productName = OpenJio;
+			productReference = 2AF7C8DB1E46FBFE0065494C /* OpenJio.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2AF7C8EE1E46FBFE0065494C /* OpenJioTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2AF7C9061E46FBFE0065494C /* Build configuration list for PBXNativeTarget "OpenJioTests" */;
+			buildPhases = (
+				2AF7C8EB1E46FBFE0065494C /* Sources */,
+				2AF7C8EC1E46FBFE0065494C /* Frameworks */,
+				2AF7C8ED1E46FBFE0065494C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2AF7C8F11E46FBFE0065494C /* PBXTargetDependency */,
+			);
+			name = OpenJioTests;
+			productName = OpenJioTests;
+			productReference = 2AF7C8EF1E46FBFE0065494C /* OpenJioTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2AF7C8F91E46FBFE0065494C /* OpenJioUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2AF7C9091E46FBFE0065494C /* Build configuration list for PBXNativeTarget "OpenJioUITests" */;
+			buildPhases = (
+				2AF7C8F61E46FBFE0065494C /* Sources */,
+				2AF7C8F71E46FBFE0065494C /* Frameworks */,
+				2AF7C8F81E46FBFE0065494C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2AF7C8FC1E46FBFE0065494C /* PBXTargetDependency */,
+			);
+			name = OpenJioUITests;
+			productName = OpenJioUITests;
+			productReference = 2AF7C8FA1E46FBFE0065494C /* OpenJioUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2AF7C8D31E46FBFE0065494C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Koh Jia Rong";
+				TargetAttributes = {
+					2AF7C8DA1E46FBFE0065494C = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = YZP4SFF4YC;
+						ProvisioningStyle = Automatic;
+					};
+					2AF7C8EE1E46FBFE0065494C = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = YZP4SFF4YC;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 2AF7C8DA1E46FBFE0065494C;
+					};
+					2AF7C8F91E46FBFE0065494C = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = YZP4SFF4YC;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 2AF7C8DA1E46FBFE0065494C;
+					};
+				};
+			};
+			buildConfigurationList = 2AF7C8D61E46FBFE0065494C /* Build configuration list for PBXProject "OpenJio" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2AF7C8D21E46FBFE0065494C;
+			productRefGroup = 2AF7C8DC1E46FBFE0065494C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2AF7C8DA1E46FBFE0065494C /* OpenJio */,
+				2AF7C8EE1E46FBFE0065494C /* OpenJioTests */,
+				2AF7C8F91E46FBFE0065494C /* OpenJioUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2AF7C8D91E46FBFE0065494C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AF7C8E91E46FBFE0065494C /* LaunchScreen.storyboard in Resources */,
+				2AF7C9101E46FE770065494C /* GoogleService-Info.plist in Resources */,
+				2AF7C8E61E46FBFE0065494C /* Assets.xcassets in Resources */,
+				2AF7C8E41E46FBFE0065494C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AF7C8ED1E46FBFE0065494C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AF7C8F81E46FBFE0065494C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0F922E698E1E4B25A49BA3CA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OpenJio/Pods-OpenJio-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3AFEC579921FA5CFB47F911D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AEB61078366DCB2EE10578DB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OpenJio/Pods-OpenJio-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2AF7C8D71E46FBFE0065494C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A17C7871E47322D00AF9A68 /* NewSearchViewController.swift in Sources */,
+				2A17C7921E475BB900AF9A68 /* FIRHelperClient.swift in Sources */,
+				2A39BAD31E4EFC1F00D454F9 /* Photo+CoreDataClass.swift in Sources */,
+				2A17C78B1E47427700AF9A68 /* FBConstants.swift in Sources */,
+				2AF8E4931E4E275D0078E4C1 /* CoreDataStack.swift in Sources */,
+				2A39BAD41E4EFC1F00D454F9 /* Photo+CoreDataProperties.swift in Sources */,
+				2AF7C8E11E46FBFE0065494C /* LoginViewController.swift in Sources */,
+				2A17C7941E4771A300AF9A68 /* ActivityPin.swift in Sources */,
+				2A39BAD11E4EFC1F00D454F9 /* User+CoreDataClass.swift in Sources */,
+				2A17C78F1E474C5400AF9A68 /* FIRConstants.swift in Sources */,
+				2A39BAD21E4EFC1F00D454F9 /* User+CoreDataProperties.swift in Sources */,
+				2A17C7831E4715D600AF9A68 /* MapViewController.swift in Sources */,
+				2AF7C8DF1E46FBFE0065494C /* AppDelegate.swift in Sources */,
+				2A17C7851E471E2600AF9A68 /* SettingsViewController.swift in Sources */,
+				2A17C78D1E4742AA00AF9A68 /* FBLoginHelper.swift in Sources */,
+				2A39BACA1E4EFAB600D454F9 /* Model.xcdatamodeld in Sources */,
+				2AF8E4901E4E0F0F0078E4C1 /* ActivityViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AF7C8EB1E46FBFE0065494C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AF7C8F41E46FBFE0065494C /* OpenJioTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AF7C8F61E46FBFE0065494C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AF7C8FF1E46FBFE0065494C /* OpenJioUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2AF7C8F11E46FBFE0065494C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2AF7C8DA1E46FBFE0065494C /* OpenJio */;
+			targetProxy = 2AF7C8F01E46FBFE0065494C /* PBXContainerItemProxy */;
+		};
+		2AF7C8FC1E46FBFE0065494C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2AF7C8DA1E46FBFE0065494C /* OpenJio */;
+			targetProxy = 2AF7C8FB1E46FBFE0065494C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2AF7C8E21E46FBFE0065494C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2AF7C8E31E46FBFE0065494C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2AF7C8E71E46FBFE0065494C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2AF7C8E81E46FBFE0065494C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2AF7C9011E46FBFE0065494C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2AF7C9021E46FBFE0065494C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2AF7C9041E46FBFE0065494C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9371713E3CD72DCE4513BA8 /* Pods-OpenJio.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = YZP4SFF4YC;
+				INFOPLIST_FILE = OpenJio/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kohjiarong.OpenJio;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		2AF7C9051E46FBFE0065494C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9494664D603BF84EA123F39F /* Pods-OpenJio.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = YZP4SFF4YC;
+				INFOPLIST_FILE = OpenJio/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kohjiarong.OpenJio;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		2AF7C9071E46FBFE0065494C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = YZP4SFF4YC;
+				INFOPLIST_FILE = OpenJioTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kohjiarong.OpenJioTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OpenJio.app/OpenJio";
+			};
+			name = Debug;
+		};
+		2AF7C9081E46FBFE0065494C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = YZP4SFF4YC;
+				INFOPLIST_FILE = OpenJioTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kohjiarong.OpenJioTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OpenJio.app/OpenJio";
+			};
+			name = Release;
+		};
+		2AF7C90A1E46FBFE0065494C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = YZP4SFF4YC;
+				INFOPLIST_FILE = OpenJioUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kohjiarong.OpenJioUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = OpenJio;
+			};
+			name = Debug;
+		};
+		2AF7C90B1E46FBFE0065494C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = YZP4SFF4YC;
+				INFOPLIST_FILE = OpenJioUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kohjiarong.OpenJioUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = OpenJio;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2AF7C8D61E46FBFE0065494C /* Build configuration list for PBXProject "OpenJio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2AF7C9011E46FBFE0065494C /* Debug */,
+				2AF7C9021E46FBFE0065494C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2AF7C9031E46FBFE0065494C /* Build configuration list for PBXNativeTarget "OpenJio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2AF7C9041E46FBFE0065494C /* Debug */,
+				2AF7C9051E46FBFE0065494C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2AF7C9061E46FBFE0065494C /* Build configuration list for PBXNativeTarget "OpenJioTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2AF7C9071E46FBFE0065494C /* Debug */,
+				2AF7C9081E46FBFE0065494C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2AF7C9091E46FBFE0065494C /* Build configuration list for PBXNativeTarget "OpenJioUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2AF7C90A1E46FBFE0065494C /* Debug */,
+				2AF7C90B1E46FBFE0065494C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2A39BAC81E4EFAB600D454F9 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2A39BAC91E4EFAB600D454F9 /* Model.xcdatamodel */,
+			);
+			currentVersion = 2A39BAC91E4EFAB600D454F9 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 2AF7C8D31E46FBFE0065494C /* Project object */;
+}

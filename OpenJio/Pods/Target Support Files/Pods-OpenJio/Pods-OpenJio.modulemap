@@ -1,0 +1,6 @@
+framework module Pods_OpenJio {
+  umbrella header "Pods-OpenJio-umbrella.h"
+
+  export *
+  module * { export * }
+}
