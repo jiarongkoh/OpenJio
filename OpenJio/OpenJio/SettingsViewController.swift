@@ -28,14 +28,8 @@ class SettingsViewController: FormViewController {
     lazy var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult> = {
         let fetchedRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Photo")
         fetchedRequest.sortDescriptors = []
-//        fetchedRequest.predicate = NSPredicate(format: "pins == %@", argumentArray: [self.pin])
         return NSFetchedResultsController(fetchRequest: fetchedRequest, managedObjectContext: self.context, sectionNameKeyPath: nil, cacheName: nil)
     }()
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
     
     func fetchProfilePhotoFromCoreData() {
         do {
@@ -48,10 +42,9 @@ class SettingsViewController: FormViewController {
         let fetchedObjects = fetchedResultsController.fetchedObjects
         if fetchedObjects?.count != 0 {
             print("IMAGE PRESENT IN COREDATA")
-            print("Number of fetchedObjects: \(fetchedObjects?.count)")
+//            print("Number of fetchedObjects: \(fetchedObjects?.count)")
             
             self.profilePhoto = fetchedObjects?.last as! Photo
-            
         }
 
     }
@@ -60,18 +53,19 @@ class SettingsViewController: FormViewController {
         
         user = retrieveUserCoreData()
         fetchProfilePhotoFromCoreData()
+        self.navigationItem.title = "Settings"
         
-        searchPrefGender = UserDefaults.standard.value(forKey: "searchPrefGender") as! String?
-        searchPrefDistance = UserDefaults.standard.value(forKey: "searchPrefDistance") as! Int?
+        searchPrefGender = UserDefaults.standard.value(forKey: UserDefaultsConstants.SearchPref.Gender) as! String?
+        searchPrefDistance = UserDefaults.standard.value(forKey: UserDefaultsConstants.SearchPref.Distance) as! Int?
         
-        print("View did load: \(searchPrefGender) \(searchPrefDistance)")
+//        print("View did load: \(searchPrefGender) \(searchPrefDistance)")
 
         form +++
             Section(){ section in
                 section.header = {
                     var header = HeaderFooterView<UIView>(.callback({
                         let view = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-                        let imageView = UIImageView(frame: CGRect(x: 10, y: 20, width: 60, height: 60))
+                        let imageView = UIImageView(frame: CGRect(x: 20, y: 10, width: 80, height: 80))
                         imageView.backgroundColor = .clear
                         imageView.layer.cornerRadius = imageView.frame.size.width / 2
                         imageView.clipsToBounds = true
@@ -107,10 +101,9 @@ class SettingsViewController: FormViewController {
 
                         }
                         
-                        let screenSize = UIScreen().bounds.width
-                        let nameLabel = UILabel(frame: CGRect(x: 100, y: 40, width: 150, height: 20))
+                        let nameLabel = UILabel(frame: CGRect(x: 120, y: 40, width: 150, height: 20))
                         nameLabel.text = self.user.userName
-                        nameLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
+                        nameLabel.font = UIFont.boldSystemFont(ofSize: 18.0)
                         
                         view.addSubview(imageView)
                         view.addSubview(nameLabel)
@@ -129,9 +122,10 @@ class SettingsViewController: FormViewController {
                 $0.options = ["Men", "Women"]
                 $0.value = searchPrefGender
             }.cellUpdate({ (cell, row) in
-                let formDict = self.form.values()
-                UserDefaults.standard.set(formDict["GenderPreference"], forKey: "searchPrefGender")
+                UserDefaults.standard.set(row.value, forKey: UserDefaultsConstants.SearchPref.Gender)
                 UserDefaults.standard.synchronize()
+                }).onPresent({ (form, selectorController) in
+                    selectorController.enableDeselection = false
                 })
 
             <<< SliderRow() {
@@ -140,10 +134,9 @@ class SettingsViewController: FormViewController {
                 $0.value = Float(searchPrefDistance!)
                 $0.minimumValue = 5.0
                 $0.maximumValue = 50.0
-                $0.steps = UInt(5)
+                $0.steps = UInt(Int(9))
             }.onChange({ (row) in
-                let formDict = self.form.values()
-                UserDefaults.standard.set(formDict["SearchDistance"], forKey: "searchPrefDistance")
+                UserDefaults.standard.set(row.value, forKey: UserDefaultsConstants.SearchPref.Distance)
                 UserDefaults.standard.synchronize()
                 })
 
@@ -178,43 +171,28 @@ class SettingsViewController: FormViewController {
 
     }
     
-    func loadPhoto() {
-        FBLoginHelper.sharedInstance.getUsersProfilePic { (imageData, error) in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                if let imageData = imageData {
-                    let picture = Photo(user: self.user, imageData: imageData, context: self.context)
-                    self.profilePhoto = picture
-                }
-            }
-        }
-    }
-    
     func displayLogoutMessage() {
         let alertVC = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let logoutAction = UIAlertAction(title: "Logout", style: .destructive) { (action) in
-            self.logout()
+            let loginManager = FBSDKLoginManager()
+            loginManager.logOut()
+            
+            do {
+                try FIRAuth.auth()!.signOut()
+                let controller = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
+                self.present(controller, animated: true, completion: nil)
+                
+            } catch let signOutError as NSError {
+                print("Error signing out: \(signOutError)")
+            }
         }
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alertVC.addAction(logoutAction)
         alertVC.addAction(cancelAction)
         present(alertVC, animated: true, completion: nil)
         
-           }
-    
-    func logout() {
-        let loginManager = FBSDKLoginManager()
-        loginManager.logOut()
-        
-        do {
-            try FIRAuth.auth()!.signOut()
-            let controller = storyboard?.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
-            present(controller, animated: true, completion: nil)
-            
-        } catch let signOutError as NSError {
-            print("Error signing out: \(signOutError)")
-        }
     }
+    
 }

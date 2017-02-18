@@ -17,21 +17,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let stack = CoreDataStack(modelName: "Model")
 
     func checkIfFirstLaunch() {
-        if let searchPrefGender = UserDefaults.standard.value(forKey: "searchPrefGender") {
-            print("App launched before: \(searchPrefGender)")
+        if let firstTimeLaunch = UserDefaults.standard.value(forKey: UserDefaultsConstants.SearchPref.FirstTimeLaunch) {
+            print("App launched before")
+            
+            if let searchPrefGender = UserDefaults.standard.value(forKey: UserDefaultsConstants.SearchPref.Gender), let searchPrefDistance = UserDefaults.standard.value(forKey: UserDefaultsConstants.SearchPref.Distance) {
+                print("App launched before: \(searchPrefGender) \(searchPrefDistance)")
+            }
+            
         } else {
-            print("App launched first time")
-            UserDefaults.standard.set("Men", forKey: "searchPrefGender")
-            UserDefaults.standard.synchronize()
-        }
-        
-        if let searchPrefDistance = UserDefaults.standard.value(forKey: "searchPrefDistance") {
-            print("App launched before: \(searchPrefDistance)")
-        } else {
-            print("App launched first time")
-            UserDefaults.standard.set(10, forKey: "searchPrefDistance")
-            UserDefaults.standard.synchronize()
+            //App has never been launched before
+            print("App has never been launched before")
+            
+            let loginManager = FBSDKLoginManager()
+            loginManager.logOut()
+            
+            do {
+                try FIRAuth.auth()!.signOut()
+            } catch let signOutError as NSError {
+                print("Error signing out: \(signOutError)")
+            }
 
+            UserDefaults.standard.set(true, forKey: UserDefaultsConstants.SearchPref.FirstTimeLaunch)
+            UserDefaults.standard.set("Men", forKey: UserDefaultsConstants.SearchPref.Gender)
+            UserDefaults.standard.set(10, forKey: UserDefaultsConstants.SearchPref.Distance)
+            UserDefaults.standard.synchronize()
         }
     }
     

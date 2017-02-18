@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A0C70AE1E580971002E0D8E /* SuccessMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0C70AD1E580971002E0D8E /* SuccessMatchViewController.swift */; };
+		2A0C70B01E580F47002E0D8E /* InterestedMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0C70AF1E580F47002E0D8E /* InterestedMatchViewController.swift */; };
 		2A17C7831E4715D600AF9A68 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A17C7821E4715D600AF9A68 /* MapViewController.swift */; };
 		2A17C7851E471E2600AF9A68 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A17C7841E471E2600AF9A68 /* SettingsViewController.swift */; };
 		2A17C7871E47322D00AF9A68 /* NewSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A17C7861E47322D00AF9A68 /* NewSearchViewController.swift */; };
@@ -20,6 +22,11 @@
 		2A39BAD21E4EFC1F00D454F9 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A39BACE1E4EFC1F00D454F9 /* User+CoreDataProperties.swift */; };
 		2A39BAD31E4EFC1F00D454F9 /* Photo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A39BACF1E4EFC1F00D454F9 /* Photo+CoreDataClass.swift */; };
 		2A39BAD41E4EFC1F00D454F9 /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A39BAD01E4EFC1F00D454F9 /* Photo+CoreDataProperties.swift */; };
+		2A9E96A51E4F2EFA00B5EBC2 /* UserDefaultsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9E96A41E4F2EFA00B5EBC2 /* UserDefaultsConstants.swift */; };
+		2AEB11021E5732780025447F /* DisplayUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEB11011E5732780025447F /* DisplayUI.swift */; };
+		2AEB11051E5738400025447F /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEB11041E5738400025447F /* Reachability.swift */; };
+		2AEB11071E573AF70025447F /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEB11061E573AF70025447F /* Messages.swift */; };
+		2AEB110A1E5743CF0025447F /* NoMatchesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AEB11091E5743CF0025447F /* NoMatchesView.xib */; };
 		2AF7C8DF1E46FBFE0065494C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF7C8DE1E46FBFE0065494C /* AppDelegate.swift */; };
 		2AF7C8E11E46FBFE0065494C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF7C8E01E46FBFE0065494C /* LoginViewController.swift */; };
 		2AF7C8E41E46FBFE0065494C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AF7C8E21E46FBFE0065494C /* Main.storyboard */; };
@@ -30,6 +37,8 @@
 		2AF7C9101E46FE770065494C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AF7C90F1E46FE770065494C /* GoogleService-Info.plist */; };
 		2AF8E4901E4E0F0F0078E4C1 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF8E48F1E4E0F0F0078E4C1 /* ActivityViewController.swift */; };
 		2AF8E4931E4E275D0078E4C1 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF8E4921E4E275D0078E4C1 /* CoreDataStack.swift */; };
+		2AFF6E281E50A15F007EC302 /* MatchesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFF6E271E50A15F007EC302 /* MatchesTableViewController.swift */; };
+		2AFF6E2A1E50A2DD007EC302 /* MatchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFF6E291E50A2DD007EC302 /* MatchesTableViewCell.swift */; };
 		6A9F1D008DBBA6F32B1120F8 /* Pods_OpenJio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3668C88FAAEB6E82E01DBBA /* Pods_OpenJio.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +60,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A0C70AD1E580971002E0D8E /* SuccessMatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessMatchViewController.swift; sourceTree = "<group>"; };
+		2A0C70AF1E580F47002E0D8E /* InterestedMatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestedMatchViewController.swift; sourceTree = "<group>"; };
 		2A17C7821E4715D600AF9A68 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		2A17C7841E471E2600AF9A68 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2A17C7861E47322D00AF9A68 /* NewSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewSearchViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +75,11 @@
 		2A39BACE1E4EFC1F00D454F9 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2A39BACF1E4EFC1F00D454F9 /* Photo+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2A39BAD01E4EFC1F00D454F9 /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2A9E96A41E4F2EFA00B5EBC2 /* UserDefaultsConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsConstants.swift; sourceTree = "<group>"; };
+		2AEB11011E5732780025447F /* DisplayUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayUI.swift; sourceTree = "<group>"; };
+		2AEB11041E5738400025447F /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		2AEB11061E573AF70025447F /* Messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
+		2AEB11091E5743CF0025447F /* NoMatchesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoMatchesView.xib; sourceTree = "<group>"; };
 		2AF7C8DB1E46FBFE0065494C /* OpenJio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenJio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AF7C8DE1E46FBFE0065494C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2AF7C8E01E46FBFE0065494C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +96,8 @@
 		2AF7C90F1E46FE770065494C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2AF8E48F1E4E0F0F0078E4C1 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		2AF8E4921E4E275D0078E4C1 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		2AFF6E271E50A15F007EC302 /* MatchesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesTableViewController.swift; sourceTree = "<group>"; };
+		2AFF6E291E50A2DD007EC302 /* MatchesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesTableViewCell.swift; sourceTree = "<group>"; };
 		9494664D603BF84EA123F39F /* Pods-OpenJio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenJio.release.xcconfig"; path = "Pods/Target Support Files/Pods-OpenJio/Pods-OpenJio.release.xcconfig"; sourceTree = "<group>"; };
 		A3668C88FAAEB6E82E01DBBA /* Pods_OpenJio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OpenJio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9371713E3CD72DCE4513BA8 /* Pods-OpenJio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenJio.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OpenJio/Pods-OpenJio.debug.xcconfig"; sourceTree = "<group>"; };
@@ -119,9 +137,29 @@
 				2A17C78E1E474C5400AF9A68 /* FIRConstants.swift */,
 				2A17C7911E475BB900AF9A68 /* FIRHelperClient.swift */,
 				2A17C7931E4771A300AF9A68 /* ActivityPin.swift */,
+				2A9E96A41E4F2EFA00B5EBC2 /* UserDefaultsConstants.swift */,
 				2AF8E4941E4E27860078E4C1 /* CoreData */,
+				2AEB11081E573B010025447F /* Reachability */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		2AEB11031E57327F0025447F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2AEB11011E5732780025447F /* DisplayUI.swift */,
+				2AEB11091E5743CF0025447F /* NoMatchesView.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		2AEB11081E573B010025447F /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				2AEB11041E5738400025447F /* Reachability.swift */,
+				2AEB11061E573AF70025447F /* Messages.swift */,
+			);
+			name = Reachability;
 			sourceTree = "<group>";
 		};
 		2AF7C8D21E46FBFE0065494C = {
@@ -151,6 +189,7 @@
 			children = (
 				2AF7C8DE1E46FBFE0065494C /* AppDelegate.swift */,
 				2A17C7881E47423000AF9A68 /* Models */,
+				2AEB11031E57327F0025447F /* View */,
 				2AF7C90D1E46FC2B0065494C /* Controllers */,
 				2AF7C90C1E46FC1B0065494C /* Assets */,
 				2AF7C90E1E46FC370065494C /* SupportingFiles */,
@@ -182,6 +221,7 @@
 				2AF7C8E21E46FBFE0065494C /* Main.storyboard */,
 				2AF7C8E51E46FBFE0065494C /* Assets.xcassets */,
 				2AF7C8E71E46FBFE0065494C /* LaunchScreen.storyboard */,
+				2AFF6E291E50A2DD007EC302 /* MatchesTableViewCell.swift */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -190,10 +230,13 @@
 			isa = PBXGroup;
 			children = (
 				2AF7C8E01E46FBFE0065494C /* LoginViewController.swift */,
+				2A17C7841E471E2600AF9A68 /* SettingsViewController.swift */,
 				2A17C7821E4715D600AF9A68 /* MapViewController.swift */,
 				2A17C7861E47322D00AF9A68 /* NewSearchViewController.swift */,
-				2A17C7841E471E2600AF9A68 /* SettingsViewController.swift */,
 				2AF8E48F1E4E0F0F0078E4C1 /* ActivityViewController.swift */,
+				2AFF6E271E50A15F007EC302 /* MatchesTableViewController.swift */,
+				2A0C70AD1E580971002E0D8E /* SuccessMatchViewController.swift */,
+				2A0C70AF1E580F47002E0D8E /* InterestedMatchViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -351,6 +394,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AF7C8E91E46FBFE0065494C /* LaunchScreen.storyboard in Resources */,
+				2AEB110A1E5743CF0025447F /* NoMatchesView.xib in Resources */,
 				2AF7C9101E46FE770065494C /* GoogleService-Info.plist in Resources */,
 				2AF7C8E61E46FBFE0065494C /* Assets.xcassets in Resources */,
 				2AF7C8E41E46FBFE0065494C /* Main.storyboard in Resources */,
@@ -426,7 +470,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A0C70AE1E580971002E0D8E /* SuccessMatchViewController.swift in Sources */,
 				2A17C7871E47322D00AF9A68 /* NewSearchViewController.swift in Sources */,
+				2AEB11071E573AF70025447F /* Messages.swift in Sources */,
 				2A17C7921E475BB900AF9A68 /* FIRHelperClient.swift in Sources */,
 				2A39BAD31E4EFC1F00D454F9 /* Photo+CoreDataClass.swift in Sources */,
 				2A17C78B1E47427700AF9A68 /* FBConstants.swift in Sources */,
@@ -438,10 +484,16 @@
 				2A17C78F1E474C5400AF9A68 /* FIRConstants.swift in Sources */,
 				2A39BAD21E4EFC1F00D454F9 /* User+CoreDataProperties.swift in Sources */,
 				2A17C7831E4715D600AF9A68 /* MapViewController.swift in Sources */,
+				2AFF6E281E50A15F007EC302 /* MatchesTableViewController.swift in Sources */,
+				2A9E96A51E4F2EFA00B5EBC2 /* UserDefaultsConstants.swift in Sources */,
 				2AF7C8DF1E46FBFE0065494C /* AppDelegate.swift in Sources */,
 				2A17C7851E471E2600AF9A68 /* SettingsViewController.swift in Sources */,
 				2A17C78D1E4742AA00AF9A68 /* FBLoginHelper.swift in Sources */,
+				2AFF6E2A1E50A2DD007EC302 /* MatchesTableViewCell.swift in Sources */,
+				2AEB11051E5738400025447F /* Reachability.swift in Sources */,
 				2A39BACA1E4EFAB600D454F9 /* Model.xcdatamodeld in Sources */,
+				2A0C70B01E580F47002E0D8E /* InterestedMatchViewController.swift in Sources */,
+				2AEB11021E5732780025447F /* DisplayUI.swift in Sources */,
 				2AF8E4901E4E0F0F0078E4C1 /* ActivityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

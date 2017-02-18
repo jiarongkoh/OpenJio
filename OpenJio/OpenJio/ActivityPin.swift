@@ -22,4 +22,10 @@ struct ActivityPin {
         gender = dict[FIRConstants.UserInfo.Gender] as! String?
         searchActivities = dict[FIRConstants.Search.SearchActivities] as! String?
     }
+    
+    public var postersName: String {
+        get {
+            return self.name!
+        }
+    }
 }

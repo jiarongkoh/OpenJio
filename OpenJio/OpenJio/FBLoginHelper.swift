@@ -19,7 +19,7 @@ class FBLoginHelper: NSObject {
     func getUsersFacebookInfo(_ completionHandlerForGetUsersInfo: @escaping (_ results: AnyObject?, _ error: NSError?) -> Void) {
         print("GETTING USER INFO FROM FACEBOOK...")
 
-        let parameters = ["fields": "name, first_name, last_name, gender, picture, email"]
+        let parameters = ["fields": "name, first_name, last_name, gender, picture.type(large), email"]
         let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: parameters)
         let connection = FBSDKGraphRequestConnection()
         connection.add(graphRequest) { (connection, results, error) in
@@ -27,7 +27,7 @@ class FBLoginHelper: NSObject {
                 print(error.localizedDescription)
                 completionHandlerForGetUsersInfo(nil, error as NSError?)
             }
-//            print(results)
+            print(results)
             
             guard let userFBInfo = results as? [String: AnyObject] else {
                 print("Cannot cast")
@@ -86,7 +86,7 @@ class FBLoginHelper: NSObject {
     func getUsersProfilePic(_ completionHandlerForProfilePic: @escaping (_ results: Data?, _ error: NSError?) -> Void) {
         print("GETTING PROFILE PIC FROM FACEBOOK...")
         
-        let parameters = ["fields": "picture"]
+        let parameters = ["fields": "picture.type(large)"]
         let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: parameters)
         let connection = FBSDKGraphRequestConnection()
         connection.add(graphRequest) { (connection, results, error) in

@@ -35,7 +35,30 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        if Reachability.connectedToNetwork() {
+            print("Connected to internet")
+        } else {
+            print("Not Connected to internet")
+        }
+        
         if let _ = FIRAuth.auth()?.currentUser {
+            
+            let stack = delegate.stack
+            let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+            
+            do {
+                let results = try stack?.context.fetch(fr)
+                if results?.count != 0 {
+                    print("Stack has user info at ViewDidAppear")
+//                    print("Results: \(results)")
+                } else {
+                    print("Stack does not have user info at ViewDidAppear")
+                }
+                
+            } catch let e as NSError {
+                print(e)
+            }
+            
             self.completeLogin()
 
             DispatchQueue.main.async {
@@ -54,31 +77,44 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
 
         if let error = error {
+            
+            DisplayUI.displayErrorMessage(error.localizedDescription, hostViewController: self, activityIndicator: nil)
             print(error.localizedDescription)
         } else {
-            let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
             
-            FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
-                if let error = error {
-                    print(error.localizedDescription)
-                } else {
-                    print("User logged in: \(user)")
-                    
-                   FBLoginHelper.sharedInstance.getUsersFacebookInfo({ (results, error) in
+            if Reachability.connectedToNetwork() {
+
+                let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+                
+                FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
                     if let error = error {
                         print(error.localizedDescription)
                     } else {
+                        //                    print("User logged in: \(user)")
                         
-                        if let userFBInfo = results {
-                            self.addUsersToFirebase((user?.uid)!, userFBInfo)
-                            self.saveToCoreData((user?.uid)!, userFBInfo)
-                            self.completeLogin()
-
-                        }
+                        FBLoginHelper.sharedInstance.getUsersFacebookInfo({ (results, error) in
+                            if let error = error {
+                                print(error.localizedDescription)
+                            } else {
+                                
+                                if let userFBInfo = results {
+                                    self.addUsersToFirebase((user?.uid)!, userFBInfo)
+                                    self.saveToCoreData((user?.uid)!, userFBInfo)
+                                    self.completeLogin()
+                                    
+                                }
+                            }
+                        })
                     }
-                   })
+                })
+                
+            } else {
+                DisplayUI.displayErrorMessage(Messages.NoInternetConnection, hostViewController: self, activityIndicator: self.activityIndicator)
+                
+                DispatchQueue.main.async {
+                    self.FBLoginButton.isHidden = false
                 }
-            })
+            }
         }
     }
     
@@ -97,17 +133,35 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     func saveToCoreData(_ userUID: String, _ FBUserInfo: AnyObject) {
         let stack = delegate.stack
         let userName = FBUserInfo[FBConstants.UserInfo.Name] as! String
-        user = User(userName: userName, userUID: userUID, context: (stack?.context)!)
-        
-        DispatchQueue.main.async {
-            do {
-                try stack?.saveContext()
-                print("User Saved!")
-            } catch {
-                print("Error while saving.")
-            }
-        }
+        let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
 
+        do {
+            let results = try stack?.context.fetch(fr)
+          
+            if results?.count != 0 {
+                print("Stack has user info")
+                let userArray = results as! [User]
+//                print("UserArray: \(userArray)")
+                
+            } else if results?.count == 0 {
+                print("Stack does not have user info")
+                user = User(userName: userName, userUID: userUID, context: (stack?.context)!)
+        
+                DispatchQueue.main.async {
+                    do {
+                        try stack?.saveContext()
+                        print("User Saved!")
+                    } catch {
+                        print("Error while saving.")
+                    }
+                }
+            }
+            
+        } catch let e as NSError {
+            print(e)
+
+        }
+        
     }
 
     

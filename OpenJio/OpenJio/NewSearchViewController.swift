@@ -24,14 +24,16 @@ class NewSearchViewController: FormViewController {
         super.viewDidLoad()
         
         ref = FIRDatabase.database().reference()
-        
+        self.navigationItem.title = "Search"
+        DisplayUI.setUpTabAndNavBar(hostViewController: self)
+
         form +++
             Section()
             
             <<< PushRow<String>() {
                 $0.tag = "searchActivity"
                 $0.title = "Looking for..."
-                $0.options = ["🍴", "🏃‍♀️", "🎬"]
+                $0.options = ["🍴", "🏃", "🎬"]
                 $0.value = "🎬"
         }
 
@@ -42,25 +44,30 @@ class NewSearchViewController: FormViewController {
         let valuesDictionary = form.values()
         let searchActivity = valuesDictionary["searchActivity"]
         
-        if let user = FIRAuth.auth()?.currentUser {
-            FIRHelperClient.sharedInstance.getUserInfoFromFIR(ref, user.uid, { (results, error) in
-                if let error = error {
-                    print(error.localizedDescription)
-                } else {
-                    print(results)
-                    var userInfo = results as? [String: AnyObject]
-                    userInfo?[FIRConstants.Search.SearchActivities] = searchActivity as AnyObject?
-                    userInfo?[FIRConstants.Search.ActivityLat] = self.locationCoordinate.latitude as AnyObject?
-                    userInfo?[FIRConstants.Search.ActivityLon] = self.locationCoordinate.longitude as AnyObject?
-                    
-                    print("POST Activities to FIR: \(userInfo)")
-                    self.ref.child("activities").childByAutoId().setValue(userInfo)
-                    
-                    DispatchQueue.main.async {
-                        self.dismiss(animated: true, completion: nil)
+        if Reachability.connectedToNetwork() {
+            
+            if let user = FIRAuth.auth()?.currentUser {
+                FIRHelperClient.sharedInstance.getUserInfoFromFIR(ref, user.uid, { (results, error) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    } else {
+                        //                    print(results)
+                        var userInfo = results as? [String: AnyObject]
+                        userInfo?[FIRConstants.Search.SearchActivities] = searchActivity as AnyObject?
+                        userInfo?[FIRConstants.Search.ActivityLat] = self.locationCoordinate.latitude as AnyObject?
+                        userInfo?[FIRConstants.Search.ActivityLon] = self.locationCoordinate.longitude as AnyObject?
+                        
+                        print("POST Activities to FIR: \(userInfo)")
+                        self.ref.child("activities").child(user.uid).setValue(userInfo)
+                        
+                        DispatchQueue.main.async {
+                            self.dismiss(animated: true, completion: nil)
+                        }
                     }
-                }
-            })
+                })
+            }
+        } else {
+            DisplayUI.displayErrorMessage(Messages.NoInternetConnection, hostViewController: self, activityIndicator: nil)
         }
     }
 
