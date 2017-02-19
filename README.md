@@ -18,6 +18,7 @@ let SGCoordinate = CLLocationCoordinate2DMake(1.3521, 103.8198)
 
 ```
 Please also use the following test account:
+
 email: udacity_jppzxyl_user@tfbnw.net	
 pw: UdacityTest
 
