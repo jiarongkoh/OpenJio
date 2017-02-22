@@ -28,6 +28,7 @@ class InterestedMatchViewController: UIViewController {
 
         if let interestedName = interestedName {
             interestedNameLabel.text = "\(interestedName) wanna go with you!"
+            interestedNameLabel.adjustsFontSizeToFitWidth = true
         }
     
     }

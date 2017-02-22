@@ -39,8 +39,10 @@ class DisplayUI: NSObject {
         
         let label = UILabel()
         label.frame = CGRect(x: 0, y: (widthOfView / 2) - 10, width: widthOfView, height: 20)
-        label.text = "No Matches"
-        label.textColor = UIColor.red
+        label.text = "No matches yet"
+        label.textColor = UIColor.darkGray
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.adjustsFontSizeToFitWidth = true
         
         noMatchesView.addSubview(label)
         hostViewController.view.addSubview(noMatchesView)

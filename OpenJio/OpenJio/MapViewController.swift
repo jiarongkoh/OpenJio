@@ -21,6 +21,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     var userLocationCoordinate = CLLocationCoordinate2D()
     let SGCoordinate = CLLocationCoordinate2DMake(1.3521, 103.8198)
+    let JurongCoordinate = CLLocationCoordinate2DMake(1.3329, 103.7436)
+    let activityIndicator = UIActivityIndicatorView()
+    
+    let titleLabel: UILabel = {
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        titleLabel.text = "Map"
+        return titleLabel
+    }()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -30,7 +39,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         let searchGender = UserDefaults.standard.value(forKey: UserDefaultsConstants.SearchPref.Gender) as? String
         let searchDistance = UserDefaults.standard.value(forKey: UserDefaultsConstants.SearchPref.Distance) as? Int
         
-        self.navigationItem.title = "Updating..."
+        activityIndicator.startAnimating()
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.color = UIColor(red: 216/255, green: 27/255, blue: 96/255, alpha:1.0)
+        self.navigationItem.titleView =  activityIndicator
+        
+        
 
         if Reachability.connectedToNetwork() {
             FIRHelperClient.sharedInstance.getLocationsForActivities(userLocationCoordinate, searchGender!, searchDistance!, ref) { (results, error) in
@@ -55,7 +69,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                         let allAnnotations = self.mapView.annotations
                         self.mapView.removeAnnotations(allAnnotations)
                         self.mapView.addAnnotations(annotationArray)
-                        self.navigationItem.title = "Map"
+                        self.activityIndicator.stopAnimating()
+                      
+                        self.navigationItem.titleView = self.titleLabel
                     }
                 }
                 
@@ -63,7 +79,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         } else {
             DisplayUI.displayErrorMessage(Messages.NoInternetConnection, hostViewController: self, activityIndicator: nil)
             DispatchQueue.main.async {
-                self.navigationItem.title = ""
+                self.activityIndicator.stopAnimating()
             }
         }
     }
@@ -113,13 +129,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         DisplayUI.setUpTabAndNavBar(hostViewController: self)
         
-        self.navigationItem.title = "Map"
+        self.navigationItem.titleView = self.titleLabel
     }
 
     @IBAction func newSearchButtonDidTap(_ sender: Any) {
         let newSearchVC = storyboard?.instantiateViewController(withIdentifier: "newSearchVC") as! NewSearchViewController
         let navController = UINavigationController(rootViewController: newSearchVC)
-        newSearchVC.locationCoordinate = SGCoordinate
+        newSearchVC.locationCoordinate = JurongCoordinate
         present(navController, animated: true, completion: nil)
     }
 }
@@ -137,14 +153,8 @@ extension MapViewController: MKMapViewDelegate {
         } else {
             annotationView?.annotation = annotation
         }
-        let pinImage = UIImage(named: "PersonIcon")
-        let size = CGSize(width: 30, height: 30)
-        UIGraphicsBeginImageContext(size)
-        pinImage?.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
-        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        annotationView?.image = resizedImage
+              
+        annotationView?.image = UIImage(named: "Person36Icon")
         
         return annotationView
     }

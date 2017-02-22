@@ -26,7 +26,6 @@
 		2AEB11021E5732780025447F /* DisplayUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEB11011E5732780025447F /* DisplayUI.swift */; };
 		2AEB11051E5738400025447F /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEB11041E5738400025447F /* Reachability.swift */; };
 		2AEB11071E573AF70025447F /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEB11061E573AF70025447F /* Messages.swift */; };
-		2AEB110A1E5743CF0025447F /* NoMatchesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AEB11091E5743CF0025447F /* NoMatchesView.xib */; };
 		2AF7C8DF1E46FBFE0065494C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF7C8DE1E46FBFE0065494C /* AppDelegate.swift */; };
 		2AF7C8E11E46FBFE0065494C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF7C8E01E46FBFE0065494C /* LoginViewController.swift */; };
 		2AF7C8E41E46FBFE0065494C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AF7C8E21E46FBFE0065494C /* Main.storyboard */; };
@@ -79,7 +78,6 @@
 		2AEB11011E5732780025447F /* DisplayUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayUI.swift; sourceTree = "<group>"; };
 		2AEB11041E5738400025447F /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		2AEB11061E573AF70025447F /* Messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
-		2AEB11091E5743CF0025447F /* NoMatchesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoMatchesView.xib; sourceTree = "<group>"; };
 		2AF7C8DB1E46FBFE0065494C /* OpenJio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenJio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AF7C8DE1E46FBFE0065494C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2AF7C8E01E46FBFE0065494C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -148,7 +146,6 @@
 			isa = PBXGroup;
 			children = (
 				2AEB11011E5732780025447F /* DisplayUI.swift */,
-				2AEB11091E5743CF0025447F /* NoMatchesView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -394,7 +391,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AF7C8E91E46FBFE0065494C /* LaunchScreen.storyboard in Resources */,
-				2AEB110A1E5743CF0025447F /* NoMatchesView.xib in Resources */,
 				2AF7C9101E46FE770065494C /* GoogleService-Info.plist in Resources */,
 				2AF7C8E61E46FBFE0065494C /* Assets.xcassets in Resources */,
 				2AF7C8E41E46FBFE0065494C /* Main.storyboard in Resources */,

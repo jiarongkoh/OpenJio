@@ -118,34 +118,70 @@ class FIRHelperClient: NSObject {
     func getMatchedList(_ userUID: String, _ ref: FIRDatabaseReference, _ completionHandlerForMatchedList: @escaping (_ matchedList: [String: Bool]?, _ _error: NSError?) -> Void) {
         
         ref.child("activities").observeSingleEvent(of: .value, with: { (snapshot) in
-            print(snapshot.childSnapshot(forPath: userUID))
+//            print(snapshot.childSnapshot(forPath: userUID))
             
-            let snapValue = snapshot.childSnapshot(forPath: userUID).value as! [String: AnyObject]
-            guard let matchList = snapValue["matches"] as? [String: Bool] else {
-                print("No matches found")
-                
-                let userInfo = [NSLocalizedDescriptionKey : "No Matches Found Yet"]
-                completionHandlerForMatchedList(nil, NSError(domain: "error", code: 1, userInfo: userInfo))
-                return
-            }
-            
-            //            var matchedList: [String: Bool]
-            
-            for item in matchList {
-                if item.value {
-                    //                    print(item)
+            if let snapValue = snapshot.childSnapshot(forPath: userUID).value as? [String: AnyObject] {
+                guard let matchList = snapValue["matches"] as? [String: Bool] else {
+                    print("No matches found")
+                    
+                    let userInfo = [NSLocalizedDescriptionKey : "No Matches Found Yet"]
+                    completionHandlerForMatchedList(nil, NSError(domain: "error", code: 1, userInfo: userInfo))
+                    return
                 }
+                
+                //            var matchedList: [String: Bool]
+                
+                for item in matchList {
+                    if item.value {
+                        //                    print(item)
+                    }
+                }
+                
+                completionHandlerForMatchedList(matchList, nil)
+                
+            } else {
+                let userInfo = [NSLocalizedDescriptionKey : "No Pins Found Yet"]
+                completionHandlerForMatchedList(nil, NSError(domain: "error", code: 1, userInfo: userInfo))
             }
             
-            completionHandlerForMatchedList(matchList, nil)
-            
-
         }) { (error) in
             print(error.localizedDescription)
             completionHandlerForMatchedList(nil, error as NSError)
 
         }
 
+    }
+    
+    func getNamesFromUserUID( _ userUID: String, _ ref: FIRDatabaseReference, _ completionHandlerForGetNamesFromUID: @escaping (_ name: String?, _ error: NSError?) -> Void) {
+        
+        ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+            if snapshot.hasChild(userUID) {
+                ref.child("users").child(userUID).observeSingleEvent(of: .value, with: { (snapshot) in
+                    let snapValue = snapshot.value as! [String: AnyObject]
+                    
+                    guard let name = snapValue["name"] as? String else {
+                        let userInfo = [NSLocalizedDescriptionKey : "No name"]
+                        completionHandlerForGetNamesFromUID(nil, NSError(domain: "error", code: 2, userInfo: userInfo))
+
+                        return
+                    }
+                    
+                    completionHandlerForGetNamesFromUID(name, nil)
+                    
+                }, withCancel: { (error) in
+                    print(error.localizedDescription)
+                    completionHandlerForGetNamesFromUID(nil, error as NSError)
+                })
+            } else {
+                let userInfo = [NSLocalizedDescriptionKey : "No name"]
+                completionHandlerForGetNamesFromUID(nil, NSError(domain: "error", code: 2, userInfo: userInfo))
+
+            }
+            
+        }) { (error) in
+            print(error.localizedDescription)
+            completionHandlerForGetNamesFromUID(nil, error as NSError)
+        }
     }
     
 }

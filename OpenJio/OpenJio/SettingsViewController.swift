@@ -69,6 +69,7 @@ class SettingsViewController: FormViewController {
                         imageView.backgroundColor = .clear
                         imageView.layer.cornerRadius = imageView.frame.size.width / 2
                         imageView.clipsToBounds = true
+                        imageView.contentMode = .scaleAspectFill
                         
                         if self.profilePhoto != nil {
                             print("ProfilePhoto not nil")

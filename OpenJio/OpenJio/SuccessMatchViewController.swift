@@ -21,6 +21,7 @@ class SuccessMatchViewController: UIViewController {
 
         if let matchedName = matchedName {
             matchedNameLabel.text = "Alright! It's a go with \(matchedName)!"
+            matchedNameLabel.adjustsFontSizeToFitWidth = true
         }
     
     }

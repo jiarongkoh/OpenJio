@@ -18,72 +18,153 @@ class MatchesTableViewController: UITableViewController {
     var matchedList: [String: Bool] = [:]
     var interestedNamesArray = [String]()
     var successfulMatchesArray = [String]()
+    let activityIndicator = UIActivityIndicatorView()
+    
+    let titleLabel: UILabel = {
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        titleLabel.text = "Matches"
+        return titleLabel
+    }()
+    
+    lazy var refresh: UIRefreshControl = {
+        let refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(fetchMatches), for: .valueChanged)
+        return refresh
+    }()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        configureDatabase()
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        ref = FIRDatabase.database().reference()
         
         setUpTableView()
+        configureDatabase()
+        self.tableView.addSubview(refresh)
+        
+    }
+    
+    
+    func configureDatabase() {
+        ref = FIRDatabase.database().reference()
         
         if let user = FIRAuth.auth()?.currentUser {
             userUID = user.uid
         }
-    }
+        
+        fetchMatches()
 
-    func configureDatabase() {
+    }
+    
+    func fetchMatches() {
         FIRHelperClient.sharedInstance.getMatchedList(userUID!, ref) { (results, error) in
             if let error = error {
                 print(error.localizedDescription)
                 if error.code == 1 {
                     DispatchQueue.main.async {
-                        self.navigationItem.title = "Matches"
+                        self.activityIndicator.stopAnimating()
+                        self.navigationItem.titleView = self.titleLabel
                         DisplayUI.displayNoMatchesView(hostViewController: self)
                     }
                 }
             } else {
                 DisplayUI.removeNoMatchesView(hostViewController: self)
-//                print(results)
+                //                print(results)
                 
                 self.interestedNamesArray = []
                 self.successfulMatchesArray = []
                 for result in results! {
                     if result.value == true {
-                        self.successfulMatchesArray.append(result.key)
+                        
+                        FIRHelperClient.sharedInstance.getNamesFromUserUID(result.key, self.ref, { (name, error) in
+                            if let error = error {
+                                if error.code == 2 {
+                                    DispatchQueue.main.async {
+                                        DisplayUI.displayErrorMessage(Messages.NoNamesFound, hostViewController: self, activityIndicator: self.activityIndicator)
+                                        self.refresh.endRefreshing()
+
+                                    }
+                                    
+                                }
+                            } else {
+                                if let name = name {
+                                    self.successfulMatchesArray.append(name)
+                                    
+                                    DispatchQueue.main.async {
+                                        self.activityIndicator.stopAnimating()
+                                        self.navigationItem.titleView = self.titleLabel
+                                        self.tableView.reloadData()
+                                        self.refresh.endRefreshing()
+                                    }
+
+                                }
+                            }
+
+                        })
+                        
                     } else {
-                        self.interestedNamesArray.append(result.key)
+                        FIRHelperClient.sharedInstance.getNamesFromUserUID(result.key, self.ref, { (name, error) in
+                            if let error = error {
+                                if error.code == 2 {
+                                    DispatchQueue.main.async {
+                                        DisplayUI.displayErrorMessage(Messages.NoNamesFound, hostViewController: self, activityIndicator: self.activityIndicator)
+                                        self.refresh.endRefreshing()
+
+                                    }
+                                }
+                            } else {
+                                if let name = name {
+                                    self.interestedNamesArray.append(name)
+                                    
+                                    DispatchQueue.main.async {
+                                        self.activityIndicator.stopAnimating()
+                                        self.navigationItem.titleView = self.titleLabel
+                                        self.tableView.reloadData()
+                                        self.refresh.endRefreshing()
+                                    }
+
+                                }
+                            }
+                            
+                        })
+
                     }
                 }
                 
-                DispatchQueue.main.async {
-                    self.navigationItem.title = "Matches"
-                    self.tableView.reloadData()
-                }
             }
         }
         
     }
     
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 2
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "Successful matches!"
+         if section == 0 {
+            
+            if successfulMatchesArray.count == 0 {
+                return ""
+            } else {
+                return "Successful matches!"
+            }
         } else {
-            return "Responded to you!"
+            if interestedNamesArray.count == 0 {
+                return ""
+            } else {
+                return "Responded to you!"
+            }
+
         }
     }
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
         if section == 0 {
             return successfulMatchesArray.count
         } else {
@@ -105,17 +186,7 @@ class MatchesTableViewController: UITableViewController {
             return cell
         }
     }
-//    
-//    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-//        switch indexPath.section {
-//        case 0:
-//            return indexPath
-//        case 1:
-//            return nil
-//        default:
-//            return nil
-//        }
-//    }
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
@@ -144,10 +215,17 @@ class MatchesTableViewController: UITableViewController {
     }
 
     func setUpTableView() {
-        self.navigationItem.title = "Updating..."
+        activityIndicator.startAnimating()
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.color = UIColor(red: 216/255, green: 27/255, blue: 96/255, alpha:1.0)
+        self.navigationItem.titleView =  activityIndicator
 
         self.tableView = UITableView(frame: self.tableView.frame, style: .grouped)
         self.tableView.register(MatchesTableViewCell.self, forCellReuseIdentifier: "cell")
+        
+//        let nib = UINib(nibName: "SegmentedControlTableViewCell", bundle: nil)
+//        self.tableView.register(nib, forCellReuseIdentifier: "SegmentedControlTableViewCell")
+        
     }
 
 }

@@ -239,9 +239,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BMb-f3-doF">
-                                <rect key="frame" x="139" y="274" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BMb-f3-doF">
+                                <rect key="frame" x="16" y="274" width="288" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="288" id="dVE-Tt-oYa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -266,7 +269,9 @@
                             <constraint firstItem="akm-pl-B3k" firstAttribute="top" secondItem="BMb-f3-doF" secondAttribute="bottom" constant="42" id="Owj-Qy-pS6"/>
                             <constraint firstItem="akm-pl-B3k" firstAttribute="centerX" secondItem="jVT-ny-daL" secondAttribute="centerX" id="P39-br-KUB"/>
                             <constraint firstItem="BMb-f3-doF" firstAttribute="centerX" secondItem="jVT-ny-daL" secondAttribute="centerX" id="U5a-RZ-Xh6"/>
+                            <constraint firstItem="BMb-f3-doF" firstAttribute="leading" secondItem="jVT-ny-daL" secondAttribute="leadingMargin" id="V1e-KQ-eHN"/>
                             <constraint firstItem="BMb-f3-doF" firstAttribute="centerY" secondItem="jVT-ny-daL" secondAttribute="centerY" id="uAx-Yu-vUZ"/>
+                            <constraint firstItem="BMb-f3-doF" firstAttribute="trailing" secondItem="jVT-ny-daL" secondAttribute="trailingMargin" id="xYw-za-woe"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="eyN-Lv-9rW"/>
