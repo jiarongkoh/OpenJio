@@ -30,6 +30,7 @@ class MatchesTableViewController: UITableViewController {
     lazy var refresh: UIRefreshControl = {
         let refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(fetchMatches), for: .valueChanged)
+        refresh.tag = 2
         return refresh
     }()
     
@@ -60,81 +61,91 @@ class MatchesTableViewController: UITableViewController {
     }
     
     func fetchMatches() {
-        FIRHelperClient.sharedInstance.getMatchedList(userUID!, ref) { (results, error) in
-            if let error = error {
-                print(error.localizedDescription)
-                if error.code == 1 {
-                    DispatchQueue.main.async {
-                        self.activityIndicator.stopAnimating()
-                        self.navigationItem.titleView = self.titleLabel
-                        DisplayUI.displayNoMatchesView(hostViewController: self)
-                    }
-                }
-            } else {
-                DisplayUI.removeNoMatchesView(hostViewController: self)
-                //                print(results)
-                
-                self.interestedNamesArray = []
-                self.successfulMatchesArray = []
-                for result in results! {
-                    if result.value == true {
-                        
-                        FIRHelperClient.sharedInstance.getNamesFromUserUID(result.key, self.ref, { (name, error) in
-                            if let error = error {
-                                if error.code == 2 {
-                                    DispatchQueue.main.async {
-                                        DisplayUI.displayErrorMessage(Messages.NoNamesFound, hostViewController: self, activityIndicator: self.activityIndicator)
-                                        self.refresh.endRefreshing()
-
-                                    }
-                                    
-                                }
-                            } else {
-                                if let name = name {
-                                    self.successfulMatchesArray.append(name)
-                                    
-                                    DispatchQueue.main.async {
-                                        self.activityIndicator.stopAnimating()
-                                        self.navigationItem.titleView = self.titleLabel
-                                        self.tableView.reloadData()
-                                        self.refresh.endRefreshing()
-                                    }
-
-                                }
-                            }
-
-                        })
-                        
-                    } else {
-                        FIRHelperClient.sharedInstance.getNamesFromUserUID(result.key, self.ref, { (name, error) in
-                            if let error = error {
-                                if error.code == 2 {
-                                    DispatchQueue.main.async {
-                                        DisplayUI.displayErrorMessage(Messages.NoNamesFound, hostViewController: self, activityIndicator: self.activityIndicator)
-                                        self.refresh.endRefreshing()
-
-                                    }
-                                }
-                            } else {
-                                if let name = name {
-                                    self.interestedNamesArray.append(name)
-                                    
-                                    DispatchQueue.main.async {
-                                        self.activityIndicator.stopAnimating()
-                                        self.navigationItem.titleView = self.titleLabel
-                                        self.tableView.reloadData()
-                                        self.refresh.endRefreshing()
-                                    }
-
-                                }
-                            }
+        if Reachability.connectedToNetwork() {
+            FIRHelperClient.sharedInstance.getMatchedList(userUID!, ref) { (results, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    if error.code == 1 {
+                        DispatchQueue.main.async {
+                            self.activityIndicator.stopAnimating()
+                            self.navigationItem.titleView = self.titleLabel
+                            DisplayUI.displayNoMatchesView(hostViewController: self)
+                            self.refresh.endRefreshing()
                             
-                        })
-
+                        }
                     }
+                } else {
+                    DisplayUI.removeNoMatchesView(hostViewController: self)
+                    //                print(results)
+                    
+                    self.interestedNamesArray = []
+                    self.successfulMatchesArray = []
+                    for result in results! {
+                        if result.value == true {
+                            
+                            FIRHelperClient.sharedInstance.getNamesFromUserUID(result.key, self.ref, { (name, error) in
+                                if let error = error {
+                                    if error.code == 2 {
+                                        DisplayUI.displayErrorMessage(Messages.NoNamesFound, hostViewController: self, activityIndicator: self.activityIndicator, refreshControl: self.refresh)
+                                        
+                                    }
+                                } else {
+                                    if let name = name {
+                                        self.successfulMatchesArray.append(name)
+                                        
+                                        DispatchQueue.main.async {
+                                            self.activityIndicator.stopAnimating()
+                                            self.navigationItem.titleView = self.titleLabel
+                                            self.tableView.reloadData()
+                                            self.refresh.endRefreshing()
+                                            self.refresh.isHidden = true
+
+                                        }
+                                        
+                                    }
+                                }
+                                
+                            })
+                            
+                        } else {
+                            FIRHelperClient.sharedInstance.getNamesFromUserUID(result.key, self.ref, { (name, error) in
+                                if let error = error {
+                                    if error.code == 2 {
+                                        DispatchQueue.main.async {
+                                            DisplayUI.displayErrorMessage(Messages.NoNamesFound, hostViewController: self, activityIndicator: self.activityIndicator, refreshControl: self.refresh)
+                                            
+                                        }
+                                    }
+                                } else {
+                                    if let name = name {
+                                        self.interestedNamesArray.append(name)
+                                        
+                                        DispatchQueue.main.async {
+                                            self.activityIndicator.stopAnimating()
+                                            self.navigationItem.titleView = self.titleLabel
+                                            self.tableView.reloadData()
+                                            self.refresh.endRefreshing()
+                                            self.refresh.isHidden = true
+                                        }
+                                        
+                                    }
+                                }
+                                
+                            })
+                            
+                        }
+                    }
+                    
                 }
-                
             }
+
+        } else {
+
+            DisplayUI.displayErrorMessage(Messages.NoInternetConnection, hostViewController: self, activityIndicator: self.activityIndicator, refreshControl: self.refresh)
+            DispatchQueue.main.async {
+                self.navigationItem.titleView = self.titleLabel
+            }
+           
         }
         
     }

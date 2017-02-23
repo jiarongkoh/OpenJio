@@ -42,7 +42,6 @@ class SettingsViewController: FormViewController {
         let fetchedObjects = fetchedResultsController.fetchedObjects
         if fetchedObjects?.count != 0 {
             print("IMAGE PRESENT IN COREDATA")
-//            print("Number of fetchedObjects: \(fetchedObjects?.count)")
             
             self.profilePhoto = fetchedObjects?.last as! Photo
         }
@@ -58,8 +57,6 @@ class SettingsViewController: FormViewController {
         searchPrefGender = UserDefaults.standard.value(forKey: UserDefaultsConstants.SearchPref.Gender) as! String?
         searchPrefDistance = UserDefaults.standard.value(forKey: UserDefaultsConstants.SearchPref.Distance) as! Int?
         
-//        print("View did load: \(searchPrefGender) \(searchPrefDistance)")
-
         form +++
             Section(){ section in
                 section.header = {
@@ -163,7 +160,6 @@ class SettingsViewController: FormViewController {
             let userArrays = results as? [User]
             user = userArrays?[0]
         
-            print(userArrays)
         } catch let error as NSError {
             print(error)
         }

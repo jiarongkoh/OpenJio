@@ -39,20 +39,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         let searchGender = UserDefaults.standard.value(forKey: UserDefaultsConstants.SearchPref.Gender) as? String
         let searchDistance = UserDefaults.standard.value(forKey: UserDefaultsConstants.SearchPref.Distance) as? Int
         
-        activityIndicator.startAnimating()
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.color = UIColor(red: 216/255, green: 27/255, blue: 96/255, alpha:1.0)
-        self.navigationItem.titleView =  activityIndicator
+        DispatchQueue.main.async {
+            self.activityIndicator.startAnimating()
+            self.activityIndicator.hidesWhenStopped = true
+            self.activityIndicator.color = UIColor(red: 216/255, green: 27/255, blue: 96/255, alpha:1.0)
+            self.navigationItem.titleView = self.activityIndicator
+        }
         
-        
-
         if Reachability.connectedToNetwork() {
             FIRHelperClient.sharedInstance.getLocationsForActivities(userLocationCoordinate, searchGender!, searchDistance!, ref) { (results, error) in
                 if let error = error {
                     print(error.localizedDescription)
-                } else {
-                    //                print(results)
-                    
+                    DispatchQueue.main.async {
+                        self.navigationItem.titleView = self.titleLabel
+                        DisplayUI.displayErrorMessage(Messages.NetworkError, hostViewController: self, activityIndicator: self.activityIndicator, refreshControl: nil)
+                    }
+                } else {                    
                     for result in results! {
                         guard let lat = result.lat, let lon = result.lon, let activity = result.searchActivities, let name = result.name else {
                             print("locationForActivities did not return lat or lon")
@@ -77,9 +79,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 
             }
         } else {
-            DisplayUI.displayErrorMessage(Messages.NoInternetConnection, hostViewController: self, activityIndicator: nil)
+            DisplayUI.displayErrorMessage(Messages.NoInternetConnection, hostViewController: self, activityIndicator: self.activityIndicator, refreshControl: nil)
             DispatchQueue.main.async {
-                self.activityIndicator.stopAnimating()
+                self.navigationItem.titleView = self.titleLabel
             }
         }
     }
@@ -117,6 +119,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     func setUpMapView() {
         if let userCoordinate = locationManager.location?.coordinate {
             userLocationCoordinate = userCoordinate
+            
+            /*FOR FUTURE IMPLEMENTATION, WHERE LOCATIONS ARE TAKEN FROM USER'S LOCATION*/
 //            let annotation = MKPointAnnotation()
 //            annotation.coordinate = userCoordinate
 //            mapView.addAnnotation(annotation)
@@ -164,9 +168,8 @@ extension MapViewController: MKMapViewDelegate {
             
             if Reachability.connectedToNetwork() {
                 viewActivity((view.annotation?.coordinate)!)
-//                print(view.annotation?.coordinate)
             } else {
-                DisplayUI.displayErrorMessage(Messages.NoInternetConnection, hostViewController: self, activityIndicator: nil)
+                DisplayUI.displayErrorMessage(Messages.NoInternetConnection, hostViewController: self, activityIndicator: nil, refreshControl: nil)
             }
         }
     }

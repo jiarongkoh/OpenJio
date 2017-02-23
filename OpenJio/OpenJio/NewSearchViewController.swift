@@ -35,7 +35,19 @@ class NewSearchViewController: FormViewController {
                 $0.title = "Looking for..."
                 $0.options = ["🍴", "🏃", "🎬"]
                 $0.value = "🎬"
-        }
+                }.onPresent({ (form, selectorController) in
+                    selectorController.enableDeselection = false
+                })
+        
+            <<< PushRow<String>() {
+                $0.tag = "activityLocation"
+                $0.title = "Coordinates"
+                $0.options = ["Singapore Zoo", "Changi Airport", "USS Sentosa"]
+                $0.value = "Singapore Zoo"
+                }.onPresent({ (form, selectorController) in
+                    selectorController.enableDeselection = false
+                })
+
 
     }
 
@@ -43,6 +55,7 @@ class NewSearchViewController: FormViewController {
         
         let valuesDictionary = form.values()
         let searchActivity = valuesDictionary["searchActivity"]
+        let activityLocation = valuesDictionary["activityLocation"] as? String
         
         if Reachability.connectedToNetwork() {
             
@@ -50,12 +63,22 @@ class NewSearchViewController: FormViewController {
                 FIRHelperClient.sharedInstance.getUserInfoFromFIR(ref, user.uid, { (results, error) in
                     if let error = error {
                         print(error.localizedDescription)
+                        DisplayUI.displayErrorMessage(Messages.NetworkError, hostViewController: self, activityIndicator: nil, refreshControl: nil)
+
                     } else {
-                        //                    print(results)
                         var userInfo = results as? [String: AnyObject]
                         userInfo?[FIRConstants.Search.SearchActivities] = searchActivity as AnyObject?
-                        userInfo?[FIRConstants.Search.ActivityLat] = self.locationCoordinate.latitude as AnyObject?
-                        userInfo?[FIRConstants.Search.ActivityLon] = self.locationCoordinate.longitude as AnyObject?
+                        
+                        if activityLocation == "Singapore Zoo" {
+                            userInfo?[FIRConstants.Search.ActivityLat] = 1.404584 as AnyObject?
+                            userInfo?[FIRConstants.Search.ActivityLon] = 103.793077 as AnyObject?
+                        } else if activityLocation == "Changi Airport" {
+                            userInfo?[FIRConstants.Search.ActivityLat] = 1.368058 as AnyObject?
+                            userInfo?[FIRConstants.Search.ActivityLon] = 103.991235 as AnyObject?
+                        } else if activityLocation == "USS Sentosa" {
+                            userInfo?[FIRConstants.Search.ActivityLat] = 1.254578 as AnyObject?
+                            userInfo?[FIRConstants.Search.ActivityLon] = 103.823903 as AnyObject?
+                        }
                         
                         print("POST Activities to FIR: \(userInfo)")
                         self.ref.child("activities").child(user.uid).setValue(userInfo)
@@ -67,7 +90,7 @@ class NewSearchViewController: FormViewController {
                 })
             }
         } else {
-            DisplayUI.displayErrorMessage(Messages.NoInternetConnection, hostViewController: self, activityIndicator: nil)
+            DisplayUI.displayErrorMessage(Messages.NoInternetConnection, hostViewController: self, activityIndicator: nil, refreshControl: nil)
         }
     }
 

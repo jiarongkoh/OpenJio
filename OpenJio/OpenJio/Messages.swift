@@ -12,4 +12,5 @@ struct Messages {
     
     static let NoInternetConnection = "No Internet Connection"
     static let NoNamesFound = "Seems like no names found"
+    static let NetworkError = "Network error"
 }

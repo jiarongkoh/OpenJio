@@ -19,11 +19,15 @@ class SuccessMatchViewController: UIViewController {
         
         DisplayUI.setUpTabAndNavBar(hostViewController: self)
 
-        if let matchedName = matchedName {
-            matchedNameLabel.text = "Alright! It's a go with \(matchedName)!"
-            matchedNameLabel.adjustsFontSizeToFitWidth = true
+        if Reachability.connectedToNetwork() {
+            if let matchedName = matchedName {
+                matchedNameLabel.text = "Alright! It's a go with \(matchedName)!"
+                matchedNameLabel.adjustsFontSizeToFitWidth = true
+            }
+        } else {
+            DisplayUI.displayErrorMessage(Messages.NoInternetConnection, hostViewController: self, activityIndicator: nil, refreshControl: nil)
         }
-    
+        
     }
 
 

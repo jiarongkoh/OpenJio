@@ -14,18 +14,21 @@ class DisplayUI: NSObject {
         super.init()
     }
     
-    static func displayErrorMessage(_ message: String, hostViewController: UIViewController, activityIndicator: UIActivityIndicatorView?) {
+    static func displayErrorMessage(_ message: String, hostViewController: UIViewController, activityIndicator: UIActivityIndicatorView?, refreshControl: UIRefreshControl?) {
+ 
         let alertVC = UIAlertController(title: message, message: nil, preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
         
         alertVC.addAction(action)
         
         DispatchQueue.main.async {
-            activityIndicator?.stopAnimating()
-            activityIndicator?.isHidden = true
-            hostViewController.present(alertVC, animated: true, completion: nil)
+            hostViewController.present(alertVC, animated: true, completion: {
+                activityIndicator?.stopAnimating()
+                activityIndicator?.isHidden = true
+                refreshControl?.endRefreshing()
+                refreshControl?.isHidden = true
+            })
         }
-        
     }
     
     static func displayNoMatchesView(hostViewController: UIViewController) {
@@ -33,7 +36,7 @@ class DisplayUI: NSObject {
         let noMatchesView = UIView()
         let screenBounds = UIScreen.main.bounds
         let widthOfView = CGFloat(100)
-        noMatchesView.frame = CGRect(x: (screenBounds.width / 2) - (widthOfView / 2), y: (widthOfView / 2), width: widthOfView, height: widthOfView)
+        noMatchesView.frame = CGRect(x: (screenBounds.width / 2) - (widthOfView / 2), y: (widthOfView / 2) + 50, width: widthOfView, height: widthOfView)
         noMatchesView.backgroundColor = UIColor.clear
         noMatchesView.tag = 1
         

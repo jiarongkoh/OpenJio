@@ -39,51 +39,54 @@ class ActivityViewController: UIViewController {
             userUID = user.uid
         }
         
-        FIRHelperClient.sharedInstance.getActivityDetails(coordinate, ref) { (results, error) in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                print(results)
-                self.parsedDictionary = results
-                
-                let matchList = results?[FIRConstants.Search.Matches] as? [String: AnyObject]
-                print("Matches: \(matchList)")
-
-                let name = results?[FIRConstants.UserInfo.Name] as! String
-                let activity = results?[FIRConstants.Search.SearchActivities] as! String
-                let retrievedUserUID = results?[FIRConstants.UserInfo.UserUID] as! String
-                
-                if retrievedUserUID == self.userUID {
-                    DispatchQueue.main.async {
-                        self.setUpMapView(self.coordinate)
-                        self.textView.text = "You are looking for a \(activity) buddy!"
-                        self.textView.font = UIFont.boldSystemFont(ofSize: 20.0)
-                        self.letsGoButton.isEnabled = false
-                        self.letsGoButton.isUserInteractionEnabled = false
-                        self.letsGoButton.backgroundColor = UIColor.lightGray
-                    }
-                    
+        if Reachability.connectedToNetwork() {
+            FIRHelperClient.sharedInstance.getActivityDetails(coordinate, ref) { (results, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    DisplayUI.displayErrorMessage(Messages.NetworkError, hostViewController: self, activityIndicator: nil, refreshControl: nil)
                 } else {
-                    DispatchQueue.main.async {
-                        self.textView.text = "\(name) is looking for a \(activity) buddy!"
-                        self.textView.font = UIFont.boldSystemFont(ofSize: 20.0)
-                        self.letsGoButton.isUserInteractionEnabled = true
-                        
-                        self.setUpMapView(self.coordinate)
-                        
-                        if let _ = matchList?[self.userUID!] {
-                            self.letsGoButton.alpha = 0.8
+                    self.parsedDictionary = results
+                    
+                    let matchList = results?[FIRConstants.Search.Matches] as? [String: AnyObject]
+                    
+                    let name = results?[FIRConstants.UserInfo.Name] as! String
+                    let activity = results?[FIRConstants.Search.SearchActivities] as! String
+                    let retrievedUserUID = results?[FIRConstants.UserInfo.UserUID] as! String
+                    
+                    if retrievedUserUID == self.userUID {
+                        DispatchQueue.main.async {
+                            self.setUpMapView(self.coordinate)
+                            self.textView.text = "You are looking for a \(activity) buddy!"
+                            self.textView.font = UIFont.boldSystemFont(ofSize: 20.0)
                             self.letsGoButton.isEnabled = false
                             self.letsGoButton.isUserInteractionEnabled = false
                             self.letsGoButton.backgroundColor = UIColor.lightGray
                         }
+                        
+                    } else {
+                        DispatchQueue.main.async {
+                            self.textView.text = "\(name) is looking for a \(activity) buddy!"
+                            self.textView.font = UIFont.boldSystemFont(ofSize: 20.0)
+                            self.letsGoButton.isUserInteractionEnabled = true
+                            
+                            self.setUpMapView(self.coordinate)
+                            
+                            if let _ = matchList?[self.userUID!] {
+                                self.letsGoButton.alpha = 0.8
+                                self.letsGoButton.isEnabled = false
+                                self.letsGoButton.isUserInteractionEnabled = false
+                                self.letsGoButton.backgroundColor = UIColor.lightGray
+                            }
+                        }
+                        
                     }
-
+                    
                 }
-                
             }
-        }
 
+        } else {
+             DisplayUI.displayErrorMessage(Messages.NoInternetConnection, hostViewController: self, activityIndicator: nil, refreshControl: nil)
+        }
     }
     
     
@@ -119,7 +122,7 @@ class ActivityViewController: UIViewController {
             self.ref.child("activities").child(childNode).updateChildValues(updateInfo)
             dismiss(animated: true, completion: nil)
         } else {
-            DisplayUI.displayErrorMessage(Messages.NoInternetConnection, hostViewController: self, activityIndicator: nil)
+            DisplayUI.displayErrorMessage(Messages.NoInternetConnection, hostViewController: self, activityIndicator: nil, refreshControl: nil)
         }
     }
     

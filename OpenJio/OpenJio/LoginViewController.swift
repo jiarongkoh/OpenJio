@@ -50,7 +50,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 let results = try stack?.context.fetch(fr)
                 if results?.count != 0 {
                     print("Stack has user info at ViewDidAppear")
-//                    print("Results: \(results)")
                 } else {
                     print("Stack does not have user info at ViewDidAppear")
                 }
@@ -78,7 +77,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
         if let error = error {
             
-            DisplayUI.displayErrorMessage(error.localizedDescription, hostViewController: self, activityIndicator: nil)
+            DisplayUI.displayErrorMessage(error.localizedDescription, hostViewController: self, activityIndicator: nil, refreshControl: nil)
             print(error.localizedDescription)
         } else {
             
@@ -90,8 +89,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     if let error = error {
                         print(error.localizedDescription)
                     } else {
-                        //                    print("User logged in: \(user)")
-                        
                         FBLoginHelper.sharedInstance.getUsersFacebookInfo({ (results, error) in
                             if let error = error {
                                 print(error.localizedDescription)
@@ -109,7 +106,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 })
                 
             } else {
-                DisplayUI.displayErrorMessage(Messages.NoInternetConnection, hostViewController: self, activityIndicator: self.activityIndicator)
+                DisplayUI.displayErrorMessage(Messages.NoInternetConnection, hostViewController: self, activityIndicator: self.activityIndicator, refreshControl: nil)
                 
                 DispatchQueue.main.async {
                     self.FBLoginButton.isHidden = false
@@ -139,10 +136,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             let results = try stack?.context.fetch(fr)
           
             if results?.count != 0 {
-                print("Stack has user info")
                 let userArray = results as! [User]
-//                print("UserArray: \(userArray)")
-                
+                print("Stack has user info: \(userArray)")
+
             } else if results?.count == 0 {
                 print("Stack does not have user info")
                 user = User(userName: userName, userUID: userUID, context: (stack?.context)!)
