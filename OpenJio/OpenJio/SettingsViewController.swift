@@ -63,15 +63,24 @@ class SettingsViewController: FormViewController {
                     var header = HeaderFooterView<UIView>(.callback({
                         let view = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
                         let imageView = UIImageView(frame: CGRect(x: 20, y: 10, width: 80, height: 80))
+                        let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 30, y: 30, width: 20, height: 20))
                         imageView.backgroundColor = .clear
                         imageView.layer.cornerRadius = imageView.frame.size.width / 2
                         imageView.clipsToBounds = true
                         imageView.contentMode = .scaleAspectFill
+                        imageView.addSubview(activityIndicator)
+                        
+                        DispatchQueue.main.async {
+                            activityIndicator.color = UIColor.darkGray
+                            activityIndicator.startAnimating()
+                            activityIndicator.hidesWhenStopped = true
+                        }
                         
                         if self.profilePhoto != nil {
                             print("ProfilePhoto not nil")
                             DispatchQueue.main.async {
                                 imageView.image = UIImage(data: self.profilePhoto.imageData as! Data)
+                                activityIndicator.stopAnimating()
                             }
                         } else {
                             print("ProfilePhoto nil")
@@ -93,6 +102,7 @@ class SettingsViewController: FormViewController {
                                     
                                     DispatchQueue.main.async {
                                         imageView.image = UIImage(data: imageData!)
+                                        activityIndicator.stopAnimating()
                                     }
                                 }
                             }
