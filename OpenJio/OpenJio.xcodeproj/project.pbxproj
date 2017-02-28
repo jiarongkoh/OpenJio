@@ -38,8 +38,6 @@
 		2AF7C9101E46FE770065494C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AF7C90F1E46FE770065494C /* GoogleService-Info.plist */; };
 		2AF8E4901E4E0F0F0078E4C1 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF8E48F1E4E0F0F0078E4C1 /* ActivityViewController.swift */; };
 		2AF8E4931E4E275D0078E4C1 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF8E4921E4E275D0078E4C1 /* CoreDataStack.swift */; };
-		2AFF6E281E50A15F007EC302 /* MatchesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFF6E271E50A15F007EC302 /* MatchesTableViewController.swift */; };
-		2AFF6E2A1E50A2DD007EC302 /* MatchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFF6E291E50A2DD007EC302 /* MatchesTableViewCell.swift */; };
 		6A9F1D008DBBA6F32B1120F8 /* Pods_OpenJio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3668C88FAAEB6E82E01DBBA /* Pods_OpenJio.framework */; };
 /* End PBXBuildFile section */
 
@@ -98,8 +96,6 @@
 		2AF7C90F1E46FE770065494C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2AF8E48F1E4E0F0F0078E4C1 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		2AF8E4921E4E275D0078E4C1 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		2AFF6E271E50A15F007EC302 /* MatchesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesTableViewController.swift; sourceTree = "<group>"; };
-		2AFF6E291E50A2DD007EC302 /* MatchesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesTableViewCell.swift; sourceTree = "<group>"; };
 		9494664D603BF84EA123F39F /* Pods-OpenJio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenJio.release.xcconfig"; path = "Pods/Target Support Files/Pods-OpenJio/Pods-OpenJio.release.xcconfig"; sourceTree = "<group>"; };
 		A3668C88FAAEB6E82E01DBBA /* Pods_OpenJio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OpenJio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9371713E3CD72DCE4513BA8 /* Pods-OpenJio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenJio.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OpenJio/Pods-OpenJio.debug.xcconfig"; sourceTree = "<group>"; };
@@ -222,7 +218,6 @@
 				2AF7C8E21E46FBFE0065494C /* Main.storyboard */,
 				2AF7C8E51E46FBFE0065494C /* Assets.xcassets */,
 				2AF7C8E71E46FBFE0065494C /* LaunchScreen.storyboard */,
-				2AFF6E291E50A2DD007EC302 /* MatchesTableViewCell.swift */,
 				2A2ED20B1E5DDA3F0076DEEE /* MatchTableViewCell.swift */,
 			);
 			name = Assets;
@@ -236,7 +231,6 @@
 				2A17C7821E4715D600AF9A68 /* MapViewController.swift */,
 				2A17C7861E47322D00AF9A68 /* NewSearchViewController.swift */,
 				2AF8E48F1E4E0F0F0078E4C1 /* ActivityViewController.swift */,
-				2AFF6E271E50A15F007EC302 /* MatchesTableViewController.swift */,
 				2A0C70AD1E580971002E0D8E /* SuccessMatchViewController.swift */,
 				2A0C70AF1E580F47002E0D8E /* InterestedMatchViewController.swift */,
 				2A2ED2091E5DD9B30076DEEE /* MatchViewController.swift */,
@@ -487,12 +481,10 @@
 				2A39BAD21E4EFC1F00D454F9 /* User+CoreDataProperties.swift in Sources */,
 				2A17C7831E4715D600AF9A68 /* MapViewController.swift in Sources */,
 				2A2ED20A1E5DD9B30076DEEE /* MatchViewController.swift in Sources */,
-				2AFF6E281E50A15F007EC302 /* MatchesTableViewController.swift in Sources */,
 				2A9E96A51E4F2EFA00B5EBC2 /* UserDefaultsConstants.swift in Sources */,
 				2AF7C8DF1E46FBFE0065494C /* AppDelegate.swift in Sources */,
 				2A17C7851E471E2600AF9A68 /* SettingsViewController.swift in Sources */,
 				2A17C78D1E4742AA00AF9A68 /* FBLoginHelper.swift in Sources */,
-				2AFF6E2A1E50A2DD007EC302 /* MatchesTableViewCell.swift in Sources */,
 				2AEB11051E5738400025447F /* Reachability.swift in Sources */,
 				2A2ED20C1E5DDA3F0076DEEE /* MatchTableViewCell.swift in Sources */,
 				2A39BACA1E4EFAB600D454F9 /* Model.xcdatamodeld in Sources */,

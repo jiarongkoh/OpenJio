@@ -13,6 +13,7 @@ class SuccessMatchViewController: UIViewController {
     @IBOutlet weak var matchedNameLabel: UILabel!
     
     var matchedName: String?
+    var matchedNameUserUID: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +27,6 @@ class SuccessMatchViewController: UIViewController {
             }
         } else {
             DisplayUI.displayErrorMessage(Messages.NoInternetConnection, hostViewController: self, activityIndicator: nil, refreshControl: nil)
-        }
-        
+        }        
     }
-
-
 }

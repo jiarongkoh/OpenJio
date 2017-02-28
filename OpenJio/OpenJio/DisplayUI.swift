@@ -53,7 +53,9 @@ class DisplayUI: NSObject {
     
     static func removeNoMatchesView(hostViewController: UIViewController) {
         if let viewWithTag = hostViewController.view.viewWithTag(1) {
-            viewWithTag.removeFromSuperview()
+            DispatchQueue.main.async {
+                viewWithTag.removeFromSuperview()
+            }
         }
     }
     

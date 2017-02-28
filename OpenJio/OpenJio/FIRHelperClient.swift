@@ -66,14 +66,11 @@ class FIRHelperClient: NSObject {
             var pinArray = [ActivityPin]()
             
             for snap in snapValues {
-//                print("Snap: \(snap)")
                 let broadcastersCoordinate = CLLocation(latitude: snap.value[FIRConstants.Search.ActivityLat] as! Double, longitude: snap.value[FIRConstants.Search.ActivityLon] as! Double)
                 
                 let distance = usersCoordinate.distance(from: broadcastersCoordinate)
-//                print(distance)
                 
                 if distance <= Double(distanceSearch * 1000) {
-//                    print(snap)
                     
                     let pin = ActivityPin(dict: snap.value as! [String : AnyObject])
                     pinArray.append(pin)
@@ -103,7 +100,6 @@ class FIRHelperClient: NSObject {
             
             var activityValuesDict = snapDictionary?[firstKey] as? [String: AnyObject]
             activityValuesDict?[FIRConstants.UserInfo.UserUID] = firstKey as AnyObject?
-//            print(activityValuesDict)
             
             completionHandlerforActivityDetails(activityValuesDict, nil)
 
@@ -115,32 +111,31 @@ class FIRHelperClient: NSObject {
         }
     }
     
-    func getMatchedList(_ userUID: String, _ ref: FIRDatabaseReference, _ completionHandlerForMatchedList: @escaping (_ matchedList: [String: Bool]?, _ _error: NSError?) -> Void) {
+    func getMatchedList(_ userUID: String, _ ref: FIRDatabaseReference, _ completionHandlerForMatchedList: @escaping (_ matchedList: [String: Bool]?, _ error: NSError?) -> Void) {
         
         ref.child("activities").observeSingleEvent(of: .value, with: { (snapshot) in
-//            print(snapshot.childSnapshot(forPath: userUID))
             
             if let snapValue = snapshot.childSnapshot(forPath: userUID).value as? [String: AnyObject] {
                 guard let matchList = snapValue["matches"] as? [String: Bool] else {
-                    print("No matches found")
-                    
-                    let userInfo = [NSLocalizedDescriptionKey : "No Matches Found Yet"]
+                    print("No match list found")
+                    let userInfo = [NSLocalizedDescriptionKey : "No match list found yet"]
                     completionHandlerForMatchedList(nil, NSError(domain: "error", code: 1, userInfo: userInfo))
                     return
                 }
                 
-                //            var matchedList: [String: Bool]
-                
-                for item in matchList {
-                    if item.value {
-                        //                    print(item)
+                for snap in snapshot.children {
+                    let snapDataSnapshot = snap as! FIRDataSnapshot
+                    let snapValues = snapDataSnapshot.value as? [String: AnyObject]
+                    
+                    if let _ = snapValues?["matches"] as? [String: Bool] {
                     }
                 }
-                
+
+                print("getMatchedList: \(matchList)")
                 completionHandlerForMatchedList(matchList, nil)
                 
             } else {
-                let userInfo = [NSLocalizedDescriptionKey : "No Pins Found Yet"]
+                let userInfo = [NSLocalizedDescriptionKey : "Have never dropped activity before"]
                 completionHandlerForMatchedList(nil, NSError(domain: "error", code: 1, userInfo: userInfo))
             }
             
@@ -151,6 +146,33 @@ class FIRHelperClient: NSObject {
         }
 
     }
+    
+    func getMatchedListAsResponders(_ userUID: String, _ ref: FIRDatabaseReference, _ completionHandlerForGetListAsResponders: @escaping (_ matchedList: [String: Bool]?, _ error: NSError?) -> Void) {
+        
+        ref.child("users").child(userUID).observe(.value, with: { (snapshot) in
+            if snapshot.hasChild("matches") {
+                let snapValues = snapshot.value as? [String: AnyObject]
+                guard let matchList = snapValues?["matches"] as? [String: Bool] else {
+                    print("No match list found in UsersArray")
+                    let userInfo = [NSLocalizedDescriptionKey : "No match list found yet"]
+                    completionHandlerForGetListAsResponders(nil, NSError(domain: "error", code: 1, userInfo: userInfo))
+                    return
+                }
+                print("GetMatchedListAsResponders: \(matchList)")
+                completionHandlerForGetListAsResponders(matchList, nil)
+                
+            } else {
+                let userInfo = [NSLocalizedDescriptionKey : "No Curated Match List"]
+                completionHandlerForGetListAsResponders(nil, NSError(domain: "Error", code: 3, userInfo: userInfo))
+            }
+        }, withCancel: { (error) in
+            print(error.localizedDescription)
+            completionHandlerForGetListAsResponders(nil, error as NSError)
+            
+
+        })
+    }
+    
     
     func getNamesFromUserUID( _ userUID: String, _ ref: FIRDatabaseReference, _ completionHandlerForGetNamesFromUID: @escaping (_ name: String?, _ error: NSError?) -> Void) {
         
@@ -174,6 +196,7 @@ class FIRHelperClient: NSObject {
                 })
             } else {
                 let userInfo = [NSLocalizedDescriptionKey : "No name"]
+                print("Noname")
                 completionHandlerForGetNamesFromUID(nil, NSError(domain: "error", code: 2, userInfo: userInfo))
 
             }

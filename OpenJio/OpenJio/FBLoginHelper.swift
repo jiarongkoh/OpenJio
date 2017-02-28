@@ -27,7 +27,6 @@ class FBLoginHelper: NSObject {
                 print(error.localizedDescription)
                 completionHandlerForGetUsersInfo(nil, error as NSError?)
             }
-            print(results)
             
             guard let userFBInfo = results as? [String: AnyObject] else {
                 print("Cannot cast")
@@ -74,7 +73,6 @@ class FBLoginHelper: NSObject {
                                  FIRConstants.UserInfo.LastName: userLastName,
                                  FIRConstants.UserInfo.Gender: userGender,
                                  FIRConstants.UserInfo.PictureURL: userPictureURL]
-//            print(userInfoArray)
             completionHandlerForGetUsersInfo(userInfoArray as AnyObject?, nil)
 
         }
@@ -94,7 +92,6 @@ class FBLoginHelper: NSObject {
                 print(error.localizedDescription)
                 completionHandlerForProfilePic(nil, error as NSError?)
             }
-//            print(results)
             
             guard let userFBInfo = results as? [String: AnyObject] else {
                 print("Cannot cast")
@@ -118,7 +115,6 @@ class FBLoginHelper: NSObject {
             
             let userPictureURL = URL(string: userPictureURLString)
             let imageData = try? Data(contentsOf: userPictureURL!)
-//            print(imageData)
             completionHandlerForProfilePic(imageData, nil)
             
         }

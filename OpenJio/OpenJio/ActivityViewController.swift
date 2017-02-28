@@ -21,11 +21,6 @@ class ActivityViewController: UIViewController {
     var userUID: String? = nil
     var coordinate: CLLocationCoordinate2D!
     var parsedDictionary: [String: AnyObject]?
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

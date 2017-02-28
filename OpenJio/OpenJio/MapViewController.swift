@@ -20,8 +20,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     var ref: FIRDatabaseReference!
     let locationManager = CLLocationManager()
     var userLocationCoordinate = CLLocationCoordinate2D()
-    let SGCoordinate = CLLocationCoordinate2DMake(1.3521, 103.8198)
-    let JurongCoordinate = CLLocationCoordinate2DMake(1.3329, 103.7436)
     let activityIndicator = UIActivityIndicatorView()
     
     let titleLabel: UILabel = {
@@ -120,11 +118,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         if let userCoordinate = locationManager.location?.coordinate {
             userLocationCoordinate = userCoordinate
             
-            /*FOR FUTURE IMPLEMENTATION, WHERE LOCATIONS ARE TAKEN FROM USER'S LOCATION*/
 //            let annotation = MKPointAnnotation()
 //            annotation.coordinate = userCoordinate
 //            mapView.addAnnotation(annotation)
             
+            let SGCoordinate = CLLocationCoordinate2DMake(1.3521, 103.8198)
             let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
             let region = MKCoordinateRegion(center: SGCoordinate, span: span)
             mapView.setRegion(region, animated: true)
@@ -139,7 +137,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func newSearchButtonDidTap(_ sender: Any) {
         let newSearchVC = storyboard?.instantiateViewController(withIdentifier: "newSearchVC") as! NewSearchViewController
         let navController = UINavigationController(rootViewController: newSearchVC)
-        newSearchVC.locationCoordinate = JurongCoordinate
+        newSearchVC.locationCoordinate = userLocationCoordinate
         present(navController, animated: true, completion: nil)
     }
 }

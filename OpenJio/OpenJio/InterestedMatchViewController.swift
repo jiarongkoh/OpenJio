@@ -17,6 +17,7 @@ class InterestedMatchViewController: UIViewController {
     
     var ref: FIRDatabaseReference!
     var interestedName: String?
+    var interestedUserUID: String?
     var userUID: String?
     
     override func viewDidLoad() {
@@ -52,9 +53,11 @@ class InterestedMatchViewController: UIViewController {
     
     @IBAction func respondButtonDidTap(_ sender: Any) {
         
-        let response = [interestedName!: true] as [String: Bool]
-        
+        let response = [interestedUserUID!: true] as [String: Bool]
         ref.child("activities").child(userUID!).child("matches").updateChildValues(response)
+        
+        let interestedUserResponse = [userUID!: true] as [String: Bool]
+        ref.child("users").child(interestedUserUID!).child("matches").updateChildValues(interestedUserResponse)
         
         DispatchQueue.main.async {
             self.respondButton.isUserInteractionEnabled = false
