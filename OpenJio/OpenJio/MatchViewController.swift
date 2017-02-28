@@ -109,7 +109,7 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
             FIRHelperClient.sharedInstance.getMatchedListAsResponders(userUID!, ref) { (results, error) in
                 if let error = error {
                     print(error.localizedDescription)
-                    if error.code == 1 {
+                    if error.code == 1 || error.code == 3 {
                         DispatchQueue.main.async {
                             self.activityIndicator.stopAnimating()
                             self.navigationItem.titleView = self.titleLabel
