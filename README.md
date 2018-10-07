@@ -1,4 +1,4 @@
-# OpenJio: Capstone Project
+# OpenJio: Capstone Project (for Udacity's iOS Nanodegree)
 
 OpenJio is an app that allows people to search for buddies for a particular activity. Users (orignal poster, or OP for short) can post an activity broadcast, say run or dinner. Interested responders can click on the broadcast and respond if they are interested. Every OP can only broadcast one activity at any one time.
 
